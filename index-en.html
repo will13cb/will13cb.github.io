@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>William Caron‑Bastarache — Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- External CSS file -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="inner">
+        <a class="brand" href="#home" aria-label="Home">
+          <div class="logo">W</div>
+          <span>William Caron‑Bastarache</span>
+        </a>
+        <nav class="nav">
+          <a class="about" href="#about">About</a>
+          <a class="cert" href="#certificates">Certificates</a>
+          <a class="exp" href="#experience">Experience</a>
+          <a class="edu" href="#education">Education</a>
+          <a class="port" href="#portfolio">Portfolio</a>
+          <a class="skills" href="#skills">Skills</a>
+          <a class="cw" href="#coursework">Coursework</a>
+          <a class="contact" href="#contact">Contact</a>
+        </nav>
+        <div class="lang" aria-label="Language selection">
+          <button onclick="window.location.href='index-fr.html'">FR</button>
+          <button onclick="window.location.href='index-en.html'">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="home">
+        <div class="container hero">
+          <div class="wrap">
+            <div>
+              <span class="eyebrow">Montreal, QC · Open to internships</span>
+              <h1 class="name">
+                <span>William</span>
+                <span class="accent">Caron‑Bastarache</span>
+              </h1>
+              <p class="subtitle">
+                I'm a <strong>Computer Science student</strong> focused on building clean, reliable software.
+              </p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#portfolio">View Work</a>
+                <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="container">
+          <h2>About</h2>
+          <p class="muted">A quick snapshot of who I am and what I care about.</p>
+          <div class="about-cols" style="margin-top: 18px">
+            <div class="card">
+              <p style="margin: 0 0 8px">
+                Hello, I'm <strong>William Caron‑Bastarache</strong>—a second year Computer Science student at UdeM who enjoys turning ideas into polished, performant products.
+              </p>
+              <p class="muted" style="margin: 0 0 12px">
+                I work mostly with <strong>Python</strong>, <strong>Java</strong>, <strong>TypeScript</strong>, and <strong>React/Next.js</strong>. I like using open-source software and have a growing interest in AI/ML.
+              </p>
+
+              <!-- CV -->
+              <div class="cta-row" style="margin-top:12px">
+                <a class="btn btn-primary" href="cv/CV_english.pdf" target="_blank" rel="noopener">
+                  View CV (PDF)
+                </a>
+              </div>
+              
+              <div class="bullets">
+                <div class="bullet">
+                  <label>Degree</label>
+                  <div>B.Sc. Computer Science (2024–2027, expected)</div>
+                </div>
+                <div class="bullet">
+                  <label>School</label>
+                  <div>Université de Montréal</div>
+                </div>
+                <div class="bullet">
+                  <label>Email</label>
+                  <div><a href="mailto:will13cb@gmail.com">will13cb@gmail.com</a></div>
+                </div>
+                <div class="bullet">
+                  <label>Location</label>
+                  <div>Montreal, Canada</div>
+                </div>
+                <div class="bullet">
+                  <label>Interests</label>
+                  <div>AI/ML, Full‑stack, Open-source software, Fitness, Swimming</div>
+                </div>
+                <div class="bullet">
+                  <label>LinkedIn</label>
+                  <div><a href="https://www.linkedin.com/in/william-caron-bastarache">/in/william-caron-bastarache</a></div>
+                </div>
+                <div class="bullet">
+                  <label>GitHub</label>
+                  <div><a href="https://github.com/will13cb">github.com/will13cb</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATES -->
+      <section id="certificates">
+        <div class="container">
+          <h2>Certificates</h2>
+          <div class="certs" style="margin-top: 16px">
+            <div class="cert">
+              <div>
+                <strong>Machine Learning with Python</strong><br />
+                <span class="muted">IBM</span>
+              </div>
+            </div>
+            <div class="cert">
+              <div>
+                <strong>National Lifeguard Certificate (Pool)</strong><br />
+                <span class="muted">Lifesaving Society — active</span>
+              </div>
+            </div>
+            <div class="cert">
+              <div>
+                <strong>First Aid — Red Cross</strong><br />
+                <span class="muted">16h training</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="container">
+          <h2>Experience</h2>
+          <div class="grid grid-2" style="margin-top: 16px">
+            <div class="card timeline">
+              <div class="t-item">
+                <div class="t-title">Lifeguard</div>
+                <div class="t-org">City of Brossard</div>
+                <div class="t-meta">Brossard, QC — 2022 – present</div>
+                <p class="muted">Ensure swimmer safety in busy pools; respond to emergency situations; communicate effectively with the team.</p>
+              </div>
+              <div class="t-item">
+                <div class="t-title">Night Receptionist</div>
+                <div class="t-org">Hotel Labelle</div>
+                <div class="t-meta">Montreal, QC — 2024</div>
+                <p class="muted">Manage night front-desk operations; maintain service continuity and site security; coordinate and prioritize guest requests.</p>
+              </div>
+            </div>
+            <div class="card timeline">
+              <div class="t-item">
+                <div class="t-title">Swimming Instructor</div>
+                <div class="t-org">Cégep Édouard‑Montpetit</div>
+                <div class="t-meta">Longueuil, QC — 2022</div>
+                <p class="muted">Teach swimming to diverse groups; adapt teaching methods to skill levels; foster progression and participant confidence.</p>
+              </div>
+              <div class="t-item">
+                <div class="t-title">Volunteer</div>
+                <div class="t-org">École internationale Lucille‑Teasdale</div>
+                <div class="t-meta">Brossard, QC — 2016 – 2021</div>
+                <p class="muted">Assist with renovations; support fundraising campaigns; contribute to event preparation and organization.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education">
+        <div class="container">
+          <h2>Education</h2>
+          <div class="grid grid-3" style="margin-top: 16px">
+            <div class="card">
+              <div class="t-org">Université de Montréal</div>
+              <div class="t-title">B.Sc. Computer Science</div>
+              <div class="t-meta">2024 – 2027 (expected)</div>
+              <p class="muted">Relevant coursework: Software Engineering, Theoretical Computer Science, Programmation, Probability</p>
+            </div>
+            <div class="card">
+              <div class="t-org">Cégep Édouard‑Montpetit</div>
+              <div class="t-title">DEC Administration</div>
+              <div class="t-meta">2021 – 2024</div>
+              <p class="muted">Administration profile with mathematics.</p>
+            </div>
+            <div class="card">
+              <div class="t-org">École internationale Lucille‑Teasdale</div>
+              <div class="t-title">High School Diploma</div>
+              <div class="t-meta">2017 – 2021</div>
+              <p class="muted">International Education Programme (IEP)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio">
+        <div class="container">
+          <h2>Portfolio</h2>
+          <p class="muted">Selected projects.</p>
+          <div class="tiles" id="tiles">
+            
+            <a class="tile sf" href="projects/en/project-maville-en.html">
+              <div class="thumb" style="background-image: url('/img/maville.png')"></div>
+              <div class="meta">
+                <div class="cat">Software</div>
+                <strong>MaVille — Java CLI (Maven, REST)</strong>
+              </div>
+              <div class="desc">
+                CLI application simulating a city management system.  
+                Includes resident and contractor profiles, notifications, data persistence,  
+                and integration with a public REST API. Built with Maven and tested with JUnit.
+              </div>
+            </a>
+            
+            <a class="tile sf" href="projects/en/project-udem-map-en.html">
+              <div class="thumb" style="background-image: url('/img/udem-map.png')"></div>
+              <div class="meta">
+                <div class="cat">Software</div>
+                <strong>Interactive Campus Map (Next.js, MapLibre-GL) — In Progress</strong>
+              </div>
+              <div class="desc">
+                Web application for visualizing Université de Montréal’s campus.  
+                Uses OpenStreetMap data, MapLibre-GL for rendering polygons and POIs,  
+                and deployed with Vercel. Includes bilingual interface and responsive layout.
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="card" style="margin-top: 16px">
+            <div class="grid grid-3">
+              <div>
+                <h3>Programming</h3>
+                <p class="muted">Java, Python, TypeScript/JavaScript, HTML, CSS, Bash</p>
+              </div>
+              <div>
+                <h3>Frameworks</h3>
+                <p class="muted">React, Next.js, MapLibre‑GL</p>
+              </div>
+              <div>
+                <h3>Tools</h3>
+                <p class="muted">Git/GitHub, Linux, Docker, Maven, IntelliJ, VSCode, Vercel, LaTeX</p>
+              </div>
+              <div>
+                <h3>Familiar with</h3>
+                <p class="muted">OCaml, Assembly, VHDL, NumPy, Pandas, scikit-learn et Matplotlib</p>
+              </div>
+            </div>
+            <div class="bars" style="margin-top: 16px">
+              <div>
+                <strong>TypeScript</strong>
+                <div class="bar"><span style="--w: 70%"></span></div>
+              </div>
+              <div>
+                <strong>React</strong>
+                <div class="bar"><span style="--w: 70%"></span></div>
+              </div>
+              <div>
+                <strong>Java</strong>
+                <div class="bar"><span style="--w: 72%"></span></div>
+              </div>
+              <div>
+                <strong>Python</strong>
+                <div class="bar"><span style="--w: 72%"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COURSEWORK -->
+      <section id="coursework">
+        <div class="container">
+          <h2>Coursework</h2>
+          <p class="muted">
+            Selected university courses & short descriptions.
+          </p>
+
+          <!-- CS Core -->
+          <div class="grid grid-3" style="margin-top: 16px">
+            <div class="card">
+              <h3>IFT 1015 — Introduction to Programming 1</h3>
+              <p class="muted">Introduction to core programming concepts and techniques.</p>
+            </div>
+            <div class="card">
+              <h3>IFT 1025 — Introduction to Programming 2</h3>
+              <p class="muted">Follow-up programming course; software construction.</p>
+            </div>
+            <div class="card">
+              <h3>IFT 2015 — Data Structures</h3>
+              <p class="muted">ADTs; trees, dictionaries, priority queues, graphs.</p>
+            </div>
+          </div>
+
+          <!-- PL & Theory -->
+          <div class="grid grid-3" style="margin-top: 16px">
+            <div class="card">
+              <h3>IFT 2035 — Programming Language Concepts</h3>
+              <p class="muted">Execution models, parameter passing, paradigms.</p>
+            </div>
+            <div class="card">
+              <h3>IFT 2105 — Theory of Computing</h3>
+              <p class="muted">Automata/regex, grammars, computability, complexity.</p>
+            </div>
+            <div class="card">
+              <h3>IFT 2255 — Software Engineering</h3> 
+              <p class="muted">Lifecycle, analysis/modeling, OO design, debugging.</p>
+            </div>
+          </div>
+
+          <!-- Quality & Systems -->
+          <div class="grid grid-3" style="margin-top: 16px">
+            <div class="card">
+              <h3>IFT 3913 — Software Quality and Metrics</h3>
+              <p class="muted">
+                QA, standards, tests/reviews, product/process metrics.
+              </p>
+            </div>
+            <div class="card">
+              <h3>IFT 1215 — Introduction to Computer Systems</h3>
+              <p class="muted">Foundations of computer systems.</p>
+            </div>
+            <div class="card">
+              <h3>IFT 1227 — Computer Architecture 1</h3>
+              <p class="muted">Fundamentals of architecture.</p>
+            </div>
+          </div>
+
+          <!-- Math & Context -->
+          <div class="grid grid-3" style="margin-top: 16px">
+            <div class="card">
+              <h3>MAT 1600 — Linear Algebra</h3>
+              <p class="muted">
+                Systems, vector spaces, transformations, diagonalization.
+              </p>
+            </div>
+            <div class="card">
+              <h3>MAT 1400 — Calculus 1</h3>
+              <p class="muted">
+                Differential and integral calculus, functions, limits, derivatives.
+              </p>
+            </div>
+            <div class="card">
+              <h3>MAT 1978 — Probability and Statistics</h3>
+              <p class="muted">
+                Distributions, LLN/CLT, inference, regression.
+              </p>
+            </div>
+          </div>
+
+          <!-- Upcoming Coursework (Winter 2026) -->
+          <h3 style="margin-top: 32px;">Upcoming — Winter 2026</h3>
+          <p class="muted">
+            Planned courses for Winter 2026.
+          </p>
+
+          <div class="grid grid-3" style="margin-top: 16px">
+            <div class="card">
+              <h3>IFT 2505 — Linear Optimization</h3>
+              <p class="muted">
+                Linear models. Simplex method. Duality. Post-optimization.
+                Sensitivity analysis. Problems with particular structures.
+                Integer models. Cutting plane methods. Branch and bound.
+              </p>
+            </div>
+            <div class="card">
+              <h3>IFT 2245 — Operating Systems</h3>
+              <p class="muted">
+                Main functions. Parallelism management. Synchronization. Deadlock.
+                Scheduling. Memory and I/O management. Files.
+                Protection and distributed systems.
+              </p>
+            </div>
+            <div class="card">
+              <h3>STT 1700 — Introduction to Statistics</h3>
+              <p class="muted">
+                Data description and production. Probabilities. Inference.
+                Confidence intervals and hypothesis tests. Count data.
+                Contingency tables. Simple linear regression.
+                <em>Note: use of software package.</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-3" style="margin-top: 16px">
+            <div class="card">
+              <h3>IFT 2125 — Introduction to Algorithms</h3>
+              <p class="muted">
+                Algorithm design and analysis. Asymptotic notation, recurrence relations.
+                Greedy algorithms, divide-and-conquer, dynamic programming, graph traversal,
+                backtracking, probabilistic algorithms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="container">
+          <h2>Contact</h2>
+          <p class="muted">Let's talk.</p>
+          <div class="contact-grid" style="margin-top: 16px">
+            <div class="card">
+              <div class="bullet">
+                <label>Email</label>
+                <div><a href="mailto:will13cb@gmail.com">will13cb@gmail.com</a></div>
+              </div>
+              <div class="bullet">
+                <label>Phone</label>
+                <div>438‑321‑0532</div>
+              </div>
+              <div class="bullet">
+                <label>Location</label>
+                <div>Montreal, QC, Canada</div>
+              </div>
+              <div class="bullet">
+                <label>GitHub</label>
+                <div><a href="https://github.com/will13cb">github.com/will13cb</a></div>
+              </div>
+              <div class="bullet">
+                <label>LinkedIn</label>
+                <div><a href="https://www.linkedin.com/in/william-caron-bastarache">/in/william-caron-bastarache</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">© <span id="y"></span> William Caron‑Bastarache</div>
+      </section>
+    </main>
+
+    <script>
+      // Set current year
+      document.getElementById('y').textContent = new Date().getFullYear();
+
+      // Scroll to top button functionality
+      const upBtn = document.createElement('button');
+      upBtn.textContent = '↑';
+      upBtn.id = 'toTopBtn';
+      upBtn.title = 'Go to top';
+      document.body.appendChild(upBtn);
+
+      upBtn.style.position = 'fixed';
+      upBtn.style.bottom = '32px';
+      upBtn.style.right = '32px';
+      upBtn.style.padding = '12px 18px';
+      upBtn.style.fontSize = '1.5rem';
+      upBtn.style.borderRadius = '50%';
+      upBtn.style.border = 'none';
+      upBtn.style.background = '#222';
+      upBtn.style.color = '#fff';
+      upBtn.style.cursor = 'pointer';
+      upBtn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+      upBtn.style.display = 'none';
+      upBtn.style.zIndex = '1000';
+
+      window.addEventListener('scroll', () => {
+        upBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+      });
+
+      upBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>
+

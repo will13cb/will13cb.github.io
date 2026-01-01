@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IFT3913 — Tâche 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="inner">
+        <a class="brand" href="../../index-fr.html" aria-label="Home">
+          <div class="logo">W</div>
+          <span>William Caron-Bastarache</span>
+        </a>
+        <nav class="nav">
+          <a href="../../index-fr.html#portfolio">← Retour au portfolio</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home">
+        <div class="container hero">
+          <div class="wrap" style="grid-template-columns:1fr;justify-items:center;text-align:center;">
+            <div>
+              <span class="eyebrow">IFT3913</span>
+              <h1 class="name"><span>GitHub Actions (Quality Gate)</span></h1>
+              <p class="subtitle">
+                Pipeline CI basé sur PIT : comparaison avec une baseline, échec automatique sur régression,
+                et rapports accessibles via artifacts. Réalisé lors de mon cours de qualité logiciel (IFT3913).
+              </p>
+              <div class="cta-row" style="justify-content:center;flex-wrap:wrap;">
+                <a class="btn btn-primary" href="https://github.com/umontreal-diro/graphhopper.git" target="_blank" rel="noopener">Repo GitHub</a>
+                <a class="btn btn-ghost" href="#resume">Résumé</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resume">
+        <div class="container">
+          <div class="grid grid-2">
+            <div class="card">
+              <h2>Résumé</h2>
+              <p class="muted">
+                Mise en place d’un “gate” de qualité dans GitHub Actions : le build échoue si le score PIT diminue.
+                Une baseline stable est conservée et mise à jour uniquement quand <code>master</code> est “green”.
+              </p>
+              <div class="bullets" style="margin-top:12px;">
+                <div class="bullet"><label>Contrôle</label><div>Fail on mutation score regression</div></div>
+                <div class="bullet"><label>Baseline</label><div>Cache GitHub Actions (référence master)</div></div>
+                <div class="bullet"><label>Rapports</label><div>Upload artifact des rapports PIT</div></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2>Liens</h2>
+              <div class="cta-row" style="justify-content:center;flex-wrap:wrap;">
+                <a class="btn btn-primary" href="https://github.com/umontreal-diro/graphhopper.git" target="_blank" rel="noopener">GraphHopper</a>
+                <a class="btn btn-ghost" href="projet-tache1-fr.html">← Tâche 1</a>
+                <a class="btn btn-ghost" href="projet-tache2-fr.html">← Tâche 2</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Ce qui a été ajouté</h2>
+          <div class="grid grid-3" style="margin-top:16px;">
+            <div class="card">
+              <h3>Gate PIT</h3>
+              <p class="muted">Comparaison “baseline vs build courant” et échec immédiat si baisse.</p>
+            </div>
+            <div class="card">
+              <h3>Baseline stable</h3>
+              <p class="muted">Baseline persistée via cache, mise à jour uniquement sur <code>master</code>.</p>
+            </div>
+            <div class="card">
+              <h3>Artifacts</h3>
+              <p class="muted">Rapports PIT uploadés pour inspection et débogage.</p>
+            </div>
+            <div class="card">
+              <h3>Script dédié</h3>
+              <p class="muted">Comparaison numérique (float) isolée dans un script simple et testable.</p>
+            </div>
+            <div class="card">
+              <h3>Exécution ciblée</h3>
+              <p class="muted">PIT exécuté sur le module <code>core</code> pour garder un pipeline efficace.</p>
+            </div>
+            <div class="card">
+              <h3>On failure</h3>
+                <p class="muted">
+                    Action
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
+                    Rickroll
+                </a>
+                 déclenché en cas d’échec
+                </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Validation (scénarios)</h2>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card">
+              <h3>Baseline (succès sur master)</h3>
+              <p class="muted">
+                Quand le build passe sur <code>master</code>, la baseline est (re)générée et sauvegardée,
+                garantissant une référence fiable pour les exécutions suivantes.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Régression (échec sur branche)</h3>
+              <p class="muted">
+                Sur une branche, si une régression PIT est introduite, l’étape de comparaison échoue
+                et empêche la validation du pipeline.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="card" style="max-width:820px;margin:0 auto;text-align:center;">
+            <h2>Me contacter</h2>
+            <p class="muted">Questions ou collaboration ? Écrivez-moi.</p>
+            <div class="cta-row" style="justify-content:center;">
+              <a class="btn btn-primary" href="mailto:will13cb@gmail.com">will13cb@gmail.com</a>
+              <a class="btn btn-ghost" href="../../index-fr.html#portfolio">Retour au portfolio</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer">© <span id="y2"></span> William Caron-Bastarache</div>
+      </section>
+    </main>
+
+    <script>document.getElementById('y2').textContent=new Date().getFullYear();</script>
+  </body>
+</html>

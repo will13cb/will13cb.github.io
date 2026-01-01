@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IFT3913 — Tâche 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="inner">
+        <a class="brand" href="../../index-fr.html" aria-label="Home">
+          <div class="logo">W</div>
+          <span>William Caron-Bastarache</span>
+        </a>
+        <nav class="nav">
+          <a href="../../index-fr.html#portfolio">← Retour au portfolio</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home">
+        <div class="container hero">
+          <div class="wrap" style="grid-template-columns:1fr;justify-items:center;text-align:center;">
+            <div>
+              <span class="eyebrow">IFT3913</span>
+              <h1 class="name"><span>Tests unitaires & Mutation Testing</span></h1>
+              <p class="subtitle">
+                Ajout de tests ciblés sur GraphHopper, mesures JaCoCo avant/après,
+                et analyse de robustesse avec PIT (mutation testing). Réalisé lors de mon cours de qualité logiciel (IFT3913).
+              </p>
+              <div class="cta-row" style="justify-content:center;flex-wrap:wrap;">
+                <a class="btn btn-primary" href="https://github.com/umontreal-diro/graphhopper.git" target="_blank" rel="noopener">Repo GitHub</a>
+                <a class="btn btn-ghost" href="#resume">Résumé</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resume">
+        <div class="container">
+          <div class="grid grid-2">
+            <div class="card">
+              <h2>Résumé</h2>
+              <p class="muted">
+                Travail sur 3 classes utilitaires du module <code>core</code> : ajout de 7 nouveaux tests, configuration de PIT,
+                et comparaison des résultats (couverture + mutation) avant et après.
+              </p>
+              <div class="bullets" style="margin-top:12px;">
+                <div class="bullet"><label>Classes</label><div>AngleCalc, BitUtil, ArrayUtil</div></div>
+                <div class="bullet"><label>Ajouts</label><div>7 tests (3 + 2 + 2) + java-faker</div></div>
+                <div class="bullet"><label>Outils</label><div>JUnit, JaCoCo, PIT</div></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2>Liens</h2>
+              <div class="cta-row" style="justify-content:center;flex-wrap:wrap;">
+                <a class="btn btn-primary" href="https://github.com/umontreal-diro/graphhopper.git" target="_blank" rel="noopener">GraphHopper</a>
+                <a class="btn btn-ghost" href="projet-tache1-fr.html">← Tâche 1</a>
+                <a class="btn btn-ghost" href="projet-tache3-fr.html">Voir Tâche 3 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Ce qui a été fait</h2>
+          <div class="grid grid-3" style="margin-top:16px;">
+            <div class="card">
+              <h3>Tests ciblés</h3>
+              <p class="muted">Cas limites, validations d’entrées, et scénarios représentatifs.</p>
+            </div>
+            <div class="card">
+              <h3>JaCoCo</h3>
+              <p class="muted">Couverture améliorée sur instructions et branches des classes ciblées.</p>
+            </div>
+            <div class="card">
+              <h3>PIT</h3>
+              <p class="muted">Robustesse mesurée via mutants : +3 mutants tués au total.</p>
+            </div>
+            <div class="card">
+              <h3>java-faker</h3>
+              <p class="muted">Génération de coordonnées réalistes pour varier les entrées.</p>
+            </div>
+            <div class="card">
+              <h3>Config PIT</h3>
+              <p class="muted">Plugin ajouté au <code>pom.xml</code> (module core) et exécution reproductible.</p>
+            </div>
+            <div class="card">
+              <h3>Rapports</h3>
+              <p class="muted">Sorties JaCoCo et PIT consultables localement (HTML).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Résultats (avant → après)</h2>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card">
+              <h3>JaCoCo (classes ciblées)</h3>
+              <p class="muted" style="margin-bottom:10px;">Amélioration mesurée sur les 3 classes.</p>
+              <div class="bullets">
+                <div class="bullet"><label>AngleCalc</label><div>82%→84% instr. • 65%→70% branches</div></div>
+                <div class="bullet"><label>ArrayUtil</label><div>91%→92% instr. • 87%→89% branches</div></div>
+                <div class="bullet"><label>BitUtil</label><div>94%→95% instr. • 96%→100% branches</div></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>PIT (global)</h3>
+              <p class="muted" style="margin-bottom:10px;">Légère hausse globale, mais gain réel en mutants tués.</p>
+              <div class="bullets">
+                <div class="bullet"><label>Mutation score</label><div>86% → 87%</div></div>
+                <div class="bullet"><label>Test strength</label><div>92% → 93%</div></div>
+                <div class="bullet"><label>Mutants tués</label><div>+3 (ArrayUtil +2, BitUtil +1)</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="card" style="max-width:820px;margin:0 auto;text-align:center;">
+            <h2>Me contacter</h2>
+            <p class="muted">Questions ou idées d’amélioration ? Écrivez-moi.</p>
+            <div class="cta-row" style="justify-content:center;">
+              <a class="btn btn-primary" href="mailto:will13cb@gmail.com">will13cb@gmail.com</a>
+              <a class="btn btn-ghost" href="../../index-fr.html#portfolio">Retour au portfolio</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer">© <span id="y2"></span> William Caron-Bastarache</div>
+      </section>
+    </main>
+
+    <script>document.getElementById('y2').textContent=new Date().getFullYear();</script>
+  </body>
+</html>

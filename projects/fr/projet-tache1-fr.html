@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IFT3913 — Tâche 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="inner">
+        <a class="brand" href="../../index-fr.html" aria-label="Home">
+          <div class="logo">W</div>
+          <span>William Caron-Bastarache</span>
+        </a>
+        <nav class="nav">
+          <a href="../../index-fr.html#portfolio">← Retour au portfolio</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home">
+        <div class="container hero">
+          <div class="wrap" style="grid-template-columns:1fr;justify-items:center;text-align:center;">
+            <div>
+              <span class="eyebrow">Projet d'école</span>
+              <h1 class="name"><span>Présentation AutoParams</span></h1>
+              <p class="subtitle">
+                Présentation et démonstration de l'extension de JUnit 5 AutoParams à la centaine d'étudiants de mon cours de qualité logiciel (IFT3913).
+              </p>
+              <div class="cta-row" style="justify-content:center;flex-wrap:wrap;">
+                <a class="btn btn-primary" href="https://github.com/AutoParams/AutoParams" target="_blank" rel="noopener">AutoParams (GitHub)</a>
+                <a class="btn btn-ghost" href="#resume">Résumé</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resume">
+        <div class="container">
+          <div class="grid grid-2">
+            <div class="card">
+              <h2>Résumé</h2>
+              <p class="muted">
+                AutoParams automatise la génération d’arguments de test dans JUnit 5 afin d’accélérer l’écriture des tests
+                et de rendre plus simple l’ajout de nouveaux cas.
+              </p>
+              <div class="bullets" style="margin-top:12px;">
+                <div class="bullet"><label>Thème</label><div>Tests paramétrés & données générées</div></div>
+                <div class="bullet"><label>Tech</label><div>Java, JUnit 5, AutoParams</div></div>
+                <div class="bullet"><label>Format</label><div>Slides + démonstration</div></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2>Liens</h2>
+              <div class="cta-row" style="justify-content:center;flex-wrap:wrap;">
+                <a class="btn btn-primary" href="https://github.com/will13cb/autoparams-demo.git" target="_blank" rel="noopener">Démo (repo)</a>
+                <a class="btn btn-ghost" href="projet-tache2-fr.html">Voir Tâche 2 →</a>
+                <a class="btn btn-ghost" href="projet-tache3-fr.html">Voir Tâche 3 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section id="presentation">
+    <div class="container">
+        <h2>Présentation (oral)</h2>
+        <p class="muted">
+        Slides utilisées pour la présentation orale — AutoParams (JUnit 5).
+        </p>
+
+        <div class="card" style="padding:0; overflow:hidden;">
+        <iframe
+            src="./slides.pdf"
+            width="100%"
+            height="650"
+            style="border:none;">
+        </iframe>
+        </div>
+    </div>
+    </section>
+
+      <section>
+        <div class="container">
+          <h2>Fonctionnalités présentées</h2>
+          <div class="grid grid-3" style="margin-top:16px;">
+            <div class="card">
+              <h3>Tests paramétrés</h3>
+              <p class="muted">@AutoSource, @Repeat, @ValueAutoSource, @CsvAutoSource.</p>
+            </div>
+            <div class="card">
+              <h3>Tests “classiques”</h3>
+              <p class="muted">@AutoParams avec injection automatique des arguments.</p>
+            </div>
+            <div class="card">
+              <h3>Contraintes</h3>
+              <p class="muted">@Min/@Max/@NotBlank/@Size et customizations ciblées.</p>
+            </div>
+            <div class="card">
+              <h3>Partage d’instances</h3>
+              <p class="muted">@Freeze et @FreezeBy pour stabiliser certaines dépendances.</p>
+            </div>
+            <div class="card">
+              <h3>Productivité</h3>
+              <p class="muted">Moins de “setup”, plus de focus sur la logique des assertions.</p>
+            </div>
+            <div class="card">
+              <h3>Fiabilité</h3>
+              <p class="muted">Variété de données → meilleure couverture des cas limites.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>À retenir</h2>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card">
+              <h3>Pourquoi c’est utile</h3>
+              <p class="muted">
+                AutoParams réduit le code répétitif et facilite l’ajout de cas de test, tout en augmentant
+                la variété des données testées.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Limite pratique</h3>
+              <p class="muted">
+                Les données générées aident, mais certains scénarios critiques nécessitent toujours des tests ciblés
+                (valeurs fixes / cas métier précis).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="card" style="max-width:820px;margin:0 auto;text-align:center;">
+            <h2>Me contacter</h2>
+            <p class="muted">Questions ou idées d’amélioration ? Écrivez-moi.</p>
+            <div class="cta-row" style="justify-content:center;">
+              <a class="btn btn-primary" href="mailto:will13cb@gmail.com">will13cb@gmail.com</a>
+              <a class="btn btn-ghost" href="../../index-fr.html#portfolio">Retour au portfolio</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer">© <span id="y2"></span> William Caron-Bastarache</div>
+      </section>
+    </main>
+
+    <script>document.getElementById('y2').textContent=new Date().getFullYear();</script>
+  </body>
+</html>

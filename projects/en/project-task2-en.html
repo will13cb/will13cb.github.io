@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IFT3913 — Task 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+
+<body>
+<header class="topbar">
+  <div class="inner">
+    <a class="brand" href="../../index.html"><div class="logo">W</div><span>William Caron-Bastarache</span></a>
+    <nav class="nav"><a href="../../index.html#portfolio">← Back to portfolio</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container wrap" style="grid-template-columns:1fr;text-align:center;">
+    <div>
+      <span class="eyebrow">IFT3913</span>
+      <h1 class="name">Unit Testing & Mutation Testing</h1>
+      <p class="subtitle">
+        Added targeted unit tests to GraphHopper, analyzed JaCoCo coverage before/after,
+        and evaluated robustness using PIT mutation testing.
+      </p>
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn btn-primary" href="https://github.com/umontreal-diro/graphhopper.git" target="_blank">GraphHopper repo</a>
+        <a class="btn btn-ghost" href="#summary">Summary</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <div class="container grid grid-2">
+    <div class="card">
+      <h2>Summary</h2>
+      <p class="muted">
+        Worked on three utility classes in the <code>core</code> module by adding 7 new tests,
+        configuring PIT, and comparing coverage and mutation scores before and after.
+      </p>
+      <div class="bullets">
+        <div class="bullet"><label>Classes</label><div>AngleCalc, BitUtil, ArrayUtil</div></div>
+        <div class="bullet"><label>Additions</label><div>7 tests + java-faker</div></div>
+        <div class="bullet"><label>Tools</label><div>JUnit, JaCoCo, PIT</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Results</h2>
+      <p class="muted">
+        Increased mutation score and killed additional mutants, improving test robustness.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="card" style="text-align:center;">
+      <h2>Contact</h2>
+      <p class="muted">Questions or discussion welcome.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:will13cb@gmail.com">will13cb@gmail.com</a>
+        <a class="btn btn-ghost" href="../../index.html#portfolio">Back to portfolio</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer">© <span id="y"></span> William Caron-Bastarache</div>
+</section>
+</main>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IFT3913 — Task 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+
+<body>
+<header class="topbar">
+  <div class="inner">
+    <a class="brand" href="../../index.html"><div class="logo">W</div><span>William Caron-Bastarache</span></a>
+    <nav class="nav"><a href="../../index.html#portfolio">← Back to portfolio</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container wrap" style="grid-template-columns:1fr;text-align:center;">
+    <div>
+      <span class="eyebrow">IFT3913</span>
+      <h1 class="name">GitHub Actions — Quality Gate</h1>
+      <p class="subtitle">
+        CI pipeline enforcing a PIT mutation score quality gate with persisted baseline
+        and automatic failure on regression.
+      </p>
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn btn-primary" href="https://github.com/umontreal-diro/graphhopper.git" target="_blank">GraphHopper repo</a>
+        <a class="btn btn-ghost" href="#summary">Summary</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <div class="container grid grid-2">
+    <div class="card">
+      <h2>Summary</h2>
+      <p class="muted">
+        Implemented a CI quality gate in GitHub Actions that fails builds when the PIT
+        mutation score decreases, using a cached baseline from <code>master</code>.
+      </p>
+      <div class="bullets">
+        <div class="bullet"><label>Control</label><div>Fail on mutation score regression</div></div>
+        <div class="bullet"><label>Baseline</label><div>Persisted via GitHub Actions cache</div></div>
+        <div class="bullet"><label>Reports</label><div>PIT reports uploaded as artifacts</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Extras</h2>
+      <p class="muted">
+        Includes a failure hook triggering a (humorous) Rickroll when the pipeline fails.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="card" style="text-align:center;">
+      <h2>Contact</h2>
+      <p class="muted">Open to questions or collaboration.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:will13cb@gmail.com">will13cb@gmail.com</a>
+        <a class="btn btn-ghost" href="../../index.html#portfolio">Back to portfolio</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer">© <span id="y"></span> William Caron-Bastarache</div>
+</section>
+</main>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -160,12 +160,10 @@
   <div class="container">
     <h2>Portfolio</h2>
     <p class="muted">Projets sélectionnés.</p>
-    <div class="tiles" id="tiles">
       
     <!-- In progress -->
     <h3 style="margin-top:16px;">En cours</h3>
     <p class="muted" style="margin-top:-6px;">Projets en développement.</p>
-    
     <div class="tiles" style="margin-top:12px;">
       <a class="tile sf" href="projects/fr/projet-event-driven-engine-fr.html">
         <div class="thumb" style="background-image: url('/img/powerbi.png')"></div>
@@ -180,10 +178,11 @@
       </a>
     </div>
     
-    <!-- Completed -->
+     <!-- Completed -->
     <h3 style="margin-top:28px;">Terminés</h3>
     <p class="muted" style="margin-top:-6px;">Projets complétés.</p>
-      
+    <div class="tiles" id="tiles" style="margin-top:12px;">
+
       <a class="tile sf" href="projects/fr/projet-maville-fr.html">
         <div class="thumb" style="background-image: url('/img/maville.png')"></div>
         <div class="meta">
@@ -191,11 +190,12 @@
           <strong>MaVille — CLI Java (Maven, REST)</strong>
         </div>
         <div class="desc">
-          Application CLI simulant un système de gestion municipale.  
-          Comprend des profils résidents et prestataires, notifications, persistance des données,  
+          Application CLI simulant un système de gestion municipale.
+          Comprend des profils résidents et prestataires, notifications, persistance des données,
           et intégration avec une API REST publique. Développée avec Maven et testée avec JUnit.
         </div>
       </a>
+
       <a class="tile sf" href="projects/fr/projet-tache1-fr.html">
         <div class="thumb" style="background-image: url('/img/ift3913.png')"></div>
         <div class="meta">
@@ -203,8 +203,8 @@
           <strong>Présentation sur AutoParams (JUnit 5)</strong>
         </div>
         <div class="desc">
-          Présentation et démonstration d’AutoParams pour JUnit 5.  
-          Génération automatique de données de test, réduction du code répétitif  
+          Présentation et démonstration d’AutoParams pour JUnit 5.
+          Génération automatique de données de test, réduction du code répétitif
           et exploration des annotations clés (@AutoSource, @Repeat, @Freeze).
         </div>
       </a>
@@ -216,8 +216,8 @@
           <strong>Tests & Mutation Testing</strong>
         </div>
         <div class="desc">
-          Ajout de tests unitaires ciblés sur le projet open source GraphHopper avec analyse JaCoCo et PIT.  
-          Comparaison avant/après, cas limites, données réalistes (java-faker)  
+          Ajout de tests unitaires ciblés sur le projet open source GraphHopper avec analyse JaCoCo et PIT.
+          Comparaison avant/après, cas limites, données réalistes (java-faker)
           et amélioration mesurée de la robustesse des tests.
         </div>
       </a>
@@ -229,11 +229,12 @@
           <strong>GitHub Actions & Quality Gate</strong>
         </div>
         <div class="desc">
-          Mise en place d’un pipeline CI avec gate PIT anti-régression.  
-          Baseline persistée via cache, comparaison automatique des scores,  
+          Mise en place d’un pipeline CI avec gate PIT anti-régression.
+          Baseline persistée via cache, comparaison automatique des scores,
           upload des rapports et validation stricte sur toutes les branches.
         </div>
       </a>
+
     </div>
   </div>
 </section>

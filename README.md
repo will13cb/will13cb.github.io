@@ -21,22 +21,6 @@ The website is built using static HTML/CSS and deployed through GitHub Pages.
 
 ---
 
-## Structure
-
-
-/
-├── index.html # English version
-├── index-fr.html # French version
-├── styles.css # Global styling
-├── cv/ # PDF CV versions
-├── img/ # Images used on the site
-└── projects/
-├── en/ # English project pages
-└── fr/ # French project pages
-
-
----
-
 ## Featured Projects
 
 ### Event-Driven Market Probability Engine (In Progress)

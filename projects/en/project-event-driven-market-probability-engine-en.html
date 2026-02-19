@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Projet : Event-Driven Market Probability Engine</title>
+    <title>Project: Event-Driven Market Probability Engine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../../styles.css" />
@@ -11,12 +11,12 @@
   <body>
     <header class="topbar">
       <div class="inner">
-        <a class="brand" href="../../index-fr.html" aria-label="Home">
+        <a class="brand" href="../../index.html" aria-label="Home">
           <div class="logo">W</div>
           <span>William Caron-Bastarache</span>
         </a>
         <nav class="nav">
-          <a href="../../index-fr.html#portfolio">← Retour au portfolio</a>
+          <a href="../../index.html#portfolio">← Back to Portfolio</a>
         </nav>
       </div>
     </header>
@@ -26,11 +26,11 @@
         <div class="container hero">
           <div class="wrap" style="grid-template-columns:1fr;justify-items:center;text-align:center;">
             <div>
-              <span class="eyebrow">Projet personnel · En cours</span>
+              <span class="eyebrow">Personal Project · In Progress</span>
               <h1 class="name"><span>Event-Driven Market Probability Engine</span></h1>
-              <p class="subtitle">Plateforme de recherche quantitative qui estime des probabilités de mouvement du marché à court terme autour d’événements macro, via un pipeline de données et de modélisation reproductible.</p>
+              <p class="subtitle">A quantitative research platform that estimates next-day market move probabilities around macro events using a reproducible data + modeling pipeline.</p>
               <div class="cta-row" style="justify-content:center;">
-                <a class="btn btn-ghost" href="../../index-fr.html#portfolio">Retour au portfolio</a>
+                <a class="btn btn-ghost" href="../../index.html#portfolio">Back to portfolio</a>
               </div>
             </div>
           </div>
@@ -41,23 +41,22 @@
         <div class="container">
           <div class="grid grid-2">
             <div class="card">
-              <h2>Résumé</h2>
+              <h2>Summary</h2>
               <p class="muted">
-                Pipeline de bout en bout qui ingère des données de marché historiques et des métadonnées d’événements, crée des variables statistiques, entraîne un modèle probabiliste, puis visualise la qualité du signal et les résultats de simulation dans Power BI.
-                Conçu comme un environnement de recherche “style Kalshi” en mode offline (batch, reproductible, testable).
+                End-to-end pipeline that ingests historical market data and event metadata, engineers statistical features, trains a probabilistic model, and visualizes signal quality and strategy outcomes in Power BI.
               </p>
               <div class="bullets" style="margin-top:12px;">
-                <div class="bullet"><label>Rôle</label><div>Architecture, ingénierie des données, modélisation, visualisation</div></div>
-                <div class="bullet"><label>Stack</label><div>PostgreSQL, Python (NumPy/Pandas, scikit-learn optionnel), dbt, Power BI, Git</div></div>
-                <div class="bullet"><label>Statut</label><div>En cours (MVP pipeline + premier dashboard en développement)</div></div>
+                <div class="bullet"><label>Role</label><div>Architecture, data engineering, modeling, visualization</div></div>
+                <div class="bullet"><label>Stack</label><div>PostgreSQL, Python (NumPy/Pandas, optional scikit-learn), dbt, Power BI, Git</div></div>
+                <div class="bullet"><label>Status</label><div>In progress (MVP pipeline + first dashboard in development)</div></div>
               </div>
             </div>
             <div class="card">
-              <h2>Démo</h2>
-              <p class="muted">À venir (rapport Power BI + captures du dashboard).</p>
+              <h2>Demo</h2>
+              <p class="muted">Coming soon</p>
               <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,0.35);margin-top:8px;background:rgba(255,255,255,0.04);">
-                <!-- Optionnel : intégrer plus tard un rapport Power BI public -->
-                <iframe src="" title="Démo Event-Driven Market Probability Engine" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+                <!-- Optional: embed a public Power BI report later -->
+                <iframe src="" title="Event-Driven Market Probability Engine Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
               </div>
             </div>
           </div>
@@ -66,14 +65,14 @@
 
       <section>
         <div class="container">
-          <h2>Fonctionnalités</h2>
+          <h2>Features</h2>
           <div class="grid grid-3" style="margin-top:16px;">
-            <div class="card"><h3>Ingestion de données</h3><p class="muted">Prix de marché + événements chargés dans PostgreSQL avec séparation raw/staging/analytics.</p></div>
-            <div class="card"><h3>Feature Engineering</h3><p class="muted">Variables statistiques (rendements, volatilité glissante, momentum, proxys de “surprise”) en Python (NumPy/Pandas).</p></div>
-            <div class="card"><h3>Modèle probabiliste</h3><p class="muted">Modèle de base (régression logistique) extensible vers des méthodes arborescentes; sorties en probabilités calibrées.</p></div>
-            <div class="card"><h3>Transformations dbt</h3><p class="muted">Modèles SQL reproductibles et tests (unicité, non-null, relations) produisant des tables fact/dim prêtes pour l’analyse.</p></div>
-            <div class="card"><h3>Backtests & métriques</h3><p class="muted">Évaluation offline : ROC/AUC, calibration, et métriques de performance (PnL, drawdown).</p></div>
-            <div class="card"><h3>Dashboard Power BI</h3><p class="muted">Pages interactives pour qualité du signal, segmentation par événement, et analyse risque/performance.</p></div>
+            <div class="card"><h3>Data Ingestion</h3><p class="muted">Market prices + event metadata loaded into PostgreSQL with a clear raw/staging/analytics separation.</p></div>
+            <div class="card"><h3>Feature Engineering</h3><p class="muted">Statistical features (returns, rolling volatility, momentum, event “surprise” proxies) built in Python (NumPy/Pandas).</p></div>
+            <div class="card"><h3>Probabilistic Modeling</h3><p class="muted">Baseline probability model (logistic regression), extensible to tree-based methods; outputs calibrated probabilities.</p></div>
+            <div class="card"><h3>dbt Transformations</h3><p class="muted">Reproducible SQL models and tests (uniqueness, not-null, relationships) producing analytics-ready fact/dimension tables.</p></div>
+            <div class="card"><h3>Backtesting & Metrics</h3><p class="muted">Offline signal evaluation: ROC/AUC, calibration checks, and strategy performance metrics (PnL, drawdown).</p></div>
+            <div class="card"><h3>Power BI Dashboard</h3><p class="muted">Interactive pages for signal quality, event segmentation, and risk/performance analysis over time.</p></div>
           </div>
         </div>
       </section>
@@ -83,17 +82,16 @@
           <h2>Architecture</h2>
           <div class="grid grid-2" style="margin-top:16px;">
             <div class="card">
-              <h3>Données & Pipeline de modélisation</h3>
+              <h3>Data & Modeling Pipeline</h3>
               <p class="muted">
-                Les jeux de données bruts (marché/événements) sont stockés dans PostgreSQL, enrichis via le feature engineering en Python, puis transformés avec dbt en schéma en étoile.
-                Les sorties du modèle (probabilités, métriques) sont réécrites en base pour une analyse reproductible.
+                Raw market/event datasets are stored in PostgreSQL, enriched with Python feature engineering, and transformed via dbt into a star schema.
+                Model outputs (probabilities, metrics) are written back to the database for reproducible analysis.
               </p>
             </div>
             <div class="card">
-              <h3>Analyse & Reporting</h3>
+              <h3>Analytics & Reporting</h3>
               <p class="muted">
-                Power BI se connecte au schéma analytics afin de visualiser distributions de probabilités, performance conditionnelle aux événements et résultats de backtests.
-                L’architecture est pensée pour remplacer plus tard les “événements historiques” par des “features de transcripts live” dans un projet temps réel.
+                Power BI connects to the analytics schema to visualize probability distributions, event-conditioned performance, and backtest results.
               </p>
             </div>
           </div>
@@ -103,20 +101,18 @@
       <section id="contact">
         <div class="container">
           <div class="card" style="max-width:820px;margin:0 auto;text-align:center;">
-            <h2>Me contacter</h2>
-            <p class="muted">Intéressé par ce projet ? Écrivez-moi.</p>
+            <h2>Contact Me</h2>
+            <p class="muted">Interested in this project? Write me.</p>
             <div class="cta-row" style="justify-content:center;">
               <a class="btn btn-primary" href="mailto:will13cb@gmail.com">will13cb@gmail.com</a>
-              <a class="btn btn-ghost" href="../../index-fr.html#portfolio">Retour au portfolio</a>
+              <a class="btn btn-ghost" href="../../index.html#portfolio">Back to portfolio</a>
             </div>
           </div>
         </div>
-        <div class="footer">© <span id="y2"></span> William Caron-Bastarache</div>
+        <div class="footer">© <span id="y"></span> William Caron-Bastarache</div>
       </section>
     </main>
 
-    <script>
-      document.getElementById('y2').textContent = new Date().getFullYear();
-    </script>
+    <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
   </body>
 </html>

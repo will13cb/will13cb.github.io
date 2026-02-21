@@ -591,6 +591,12 @@ button, .btn, .nav a {
 }
 
 @media (max-width: 520px) {
+  .topbar {
+    position: static;   /* disables sticky */
+    top: auto;
+  }
+
+
   .topbar .inner {
     padding: 10px 12px;
     gap: 10px;

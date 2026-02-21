@@ -446,9 +446,9 @@
               </p>
             </div>
           </div>
-        </div>
+        
           <!-- Current Coursework (Winter 2026) -->
-        <div class="container">
+        
           <h3 style="margin-top: 32px;">Current — Winter 2026</h3>
           <p class="muted">
             Courses for Winter 2026.
@@ -534,27 +534,36 @@
 
       // Scroll to top button functionality
       const upBtn = document.createElement('button');
-      upBtn.textContent = '↑';
+      upBtn.innerHTML = '↑'; // Use innerHTML for better symbol rendering
       upBtn.id = 'toTopBtn';
       upBtn.title = 'Go to top';
       document.body.appendChild(upBtn);
 
-      upBtn.style.position = 'fixed';
-      upBtn.style.bottom = '32px';
-      upBtn.style.right = '32px';
-      upBtn.style.padding = '12px 18px';
-      upBtn.style.fontSize = '1.5rem';
-      upBtn.style.borderRadius = '50%';
-      upBtn.style.border = 'none';
-      upBtn.style.background = '#222';
-      upBtn.style.color = '#fff';
-      upBtn.style.cursor = 'pointer';
-      upBtn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
-      upBtn.style.display = 'none';
-      upBtn.style.zIndex = '1000';
+      // Explicitly set styles via JS to override any CSS conflicts
+      Object.assign(upBtn.style, {
+        position: 'fixed',
+        bottom: '32px',
+        right: '32px',
+        padding: '12px 18px',
+        fontSize: '1.5rem',
+        borderRadius: '50%',
+        border: '1px solid #334155', // Match your "ring" color
+        background: '#0ea5e9',      // Match your primary blue
+        color: '#001018',           // Dark text for contrast
+        cursor: 'pointer',
+        boxShadow: '0 8px 20px rgba(14, 165, 233, 0.4)',
+        display: 'none',
+        zIndex: '9999',             // Ensure it sits above EVERYTHING
+        transition: 'opacity 0.3s ease'
+      });
 
       window.addEventListener('scroll', () => {
-        upBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+        // Logic: Show button after scrolling down 300px
+        if (window.scrollY > 300) {
+          upBtn.style.display = 'block';
+        } else {
+          upBtn.style.display = 'none';
+        }
       });
 
       upBtn.addEventListener('click', () => {

@@ -590,7 +590,7 @@ button, .btn, .nav a {
   -webkit-tap-highlight-color: transparent;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 768px) {
   .topbar {
     position: static !important;      /* NOT sticky */
     top: auto !important;

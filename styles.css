@@ -592,8 +592,10 @@ button, .btn, .nav a {
 
 @media (max-width: 520px) {
   .topbar {
-    position: static;   /* disables sticky */
-    top: auto;
+    position: static !important;      /* NOT sticky */
+    top: auto !important;
+    z-index: auto !important;
+    backdrop-filter: none !important; /* iOS quirk helper */
   }
 
 

@@ -529,6 +529,30 @@ a:hover {
   .contact-grid { 
     grid-template-columns: 1fr; 
   } 
+    .topbar .inner {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .nav {
+    margin-left: 0;
+    flex: 1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+
+  .nav a {
+    min-width: unset;
+    padding: 8px 10px;
+    flex: 0 0 auto;
+  }
+
+  .lang {
+    flex: 0 0 auto;
+  }
 }
 
 @media (max-width: 760px) { 
@@ -541,3 +565,66 @@ a:hover {
   } 
 }
 
+
+
+/* ===== iPhone / Mobile baseline fixes ===== */
+
+/* Prevent accidental horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Keep long strings (emails/links) from overflowing */
+a, p, h1, h2, h3 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Make tap targets nicer */
+button, .btn, .nav a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 520px) {
+  .topbar .inner {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  /* Let brand shrink instead of forcing overflow */
+  .brand span {
+    display: none; /* optional, but looks much cleaner on iPhone */
+  }
+
+  .nav a {
+    padding: 10px 10px; /* bigger tap area */
+    font-size: 14px;
+  }
+
+  .lang button {
+    padding: 8px 10px;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .tiles {
+    grid-template-columns: 1fr !important;
+  }
+
+    section { padding: 56px 16px; }
+
+  .name { font-size: 34px; line-height: 1.1; }
+  .subtitle { font-size: 15px; }
+
+  .cta-row { flex-wrap: wrap; }
+  .btn { width: 100%; max-width: 360px; text-align: center; }
+}

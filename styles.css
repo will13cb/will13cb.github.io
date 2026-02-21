@@ -594,6 +594,11 @@ button, .btn, .nav a {
   .topbar .inner {
     padding: 10px 12px;
     gap: 10px;
+
+    /* NEW: stable 2-row header layout */
+    flex-wrap: wrap;                 /* allow nav to be on its own row */
+    justify-content: space-between;  /* brand left, lang right */
+    align-items: center;
   }
 
   /* Let brand shrink instead of forcing overflow */
@@ -601,9 +606,24 @@ button, .btn, .nav a {
     display: none; /* optional, but looks much cleaner on iPhone */
   }
 
+  /* NEW: pin language buttons on the right (row 1) */
+  .lang {
+    margin-left: auto;
+  }
+
+  /* NEW: nav becomes row 2, centered */
+  .nav {
+    width: 100%;
+    margin-left: 0;                  /* remove desktop auto-push */
+    justify-content: center;         /* center the items */
+    gap: 10px;
+    flex-wrap: wrap;                 /* wraps cleanly in centered rows */
+  }
+
   .nav a {
     padding: 10px 10px; /* bigger tap area */
     font-size: 14px;
+    min-width: unset;   /* IMPORTANT: remove the 120px constraint */
   }
 
   .lang button {
@@ -620,7 +640,7 @@ button, .btn, .nav a {
     grid-template-columns: 1fr !important;
   }
 
-    section { padding: 56px 16px; }
+  section { padding: 56px 16px; }
 
   .name { font-size: 34px; line-height: 1.1; }
   .subtitle { font-size: 15px; }

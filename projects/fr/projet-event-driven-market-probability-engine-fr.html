@@ -26,9 +26,9 @@
         <div class="container hero">
           <div class="wrap" style="grid-template-columns:1fr;justify-items:center;text-align:center;">
             <div>
-              <span class="eyebrow">Projet personnel · En cours</span>
+              <span class="eyebrow">Projet personnel · Phases A–D terminées</span>
               <h1 class="name"><span>Event-Driven Market Probability Engine</span></h1>
-              <p class="subtitle">Plateforme de recherche quantitative qui estime des probabilités de mouvement du marché à court terme autour d’événements macro, via un pipeline de données et de modélisation reproductible.</p>
+              <p class="subtitle">Un pipeline de recherche reproductible qui estime la probabilité des mouvements de marché du lendemain, valide cette estimation dans des conditions qui ne la flattent pas, et rapporte la conclusion honnête : le modèle n’a aucun avantage exploitable.</p>
               <div class="cta-row" style="justify-content:center;">
                 <a
                   class="btn btn-primary"
@@ -50,21 +50,26 @@
             <div class="card">
               <h2>Résumé</h2>
               <p class="muted">
-                Pipeline de bout en bout qui ingère des données de marché historiques et des métadonnées d’événements, crée des variables statistiques, entraîne un modèle probabiliste, puis visualise la qualité du signal et les résultats de simulation dans Power BI.
+                Un entrepôt PostgreSQL en couches et un modèle probabiliste validé en walk-forward, construits pour répondre honnêtement à une question : existe-t-il un avantage exploitable dans les mouvements des FNB du lendemain ? La réponse mesurée est non, et la rapporter est tout l’objectif. L’essentiel de l’ingénierie sert à rendre ce verdict fiable plutôt qu’avantageux.
               </p>
               <div class="bullets" style="margin-top:12px;">
-                <div class="bullet"><label>Rôle</label><div>Architecture, ingénierie des données, modélisation, visualisation</div></div>
-                <div class="bullet"><label>Stack</label><div>PostgreSQL, Python (NumPy/Pandas, scikit-learn optionnel), dbt, Power BI, Git</div></div>
-                <div class="bullet"><label>Statut</label><div>En cours (MVP pipeline + premier dashboard en développement)</div></div>
+                <div class="bullet"><label>Rôle</label><div>Architecture, ingénierie de données, modélisation, évaluation</div></div>
+                <div class="bullet"><label>Stack</label><div>PostgreSQL, Python (asyncio, pandas, psycopg, scikit-learn, matplotlib), fonctions de fenêtrage SQL, Make, pytest</div></div>
+                <div class="bullet"><label>Échelle</label><div>15 FNB · 32 295 lignes · 2018–2026 · 36 tests · 6 invariants au niveau de la base</div></div>
+                <div class="bullet"><label>Statut</label><div>Phases A à D terminées. Calibration ensuite, puis ingestion d’événements.</div></div>
               </div>
             </div>
             <div class="card">
-              <h2>Démo</h2>
-              <p class="muted">À venir</p>
-              <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,0.35);margin-top:8px;background:rgba(255,255,255,0.04);">
-                <!-- Optionnel : intégrer plus tard un rapport Power BI public -->
-                <iframe src="" title="Démo Event-Driven Market Probability Engine" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+              <h2>Le résultat</h2>
+              <p class="muted">
+                Cinq plis walk-forward à fenêtre croissante avec un embargo de 60 jours, puis un backtest avec coûts de transaction, comparé au simple fait de détenir le marché. Aucune stratégie ne bat ce point de référence.
+              </p>
+              <div style="border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 10px 28px rgba(0,0,0,0.35);">
+                <img src="../../img/edmp.png" alt="Rendement cumulé par stratégie, chaque pli testé séparément, comparé au portefeuille toujours investi" style="width:100%;display:block;" />
               </div>
+              <p class="muted" style="margin-top:10px;font-size:0.92em;">
+                Sharpe : 1,48 en détenant le marché, 1,22 pour le filtre de volatilité, 0,66 pour la règle directionnelle.
+              </p>
             </div>
           </div>
         </div>
@@ -72,14 +77,40 @@
 
       <section>
         <div class="container">
-          <h2>Fonctionnalités</h2>
+          <h2>Ce que le projet démontre</h2>
           <div class="grid grid-3" style="margin-top:16px;">
-            <div class="card"><h3>Ingestion de données</h3><p class="muted">Prix de marché + événements chargés dans PostgreSQL avec séparation raw/staging/analytics.</p></div>
-            <div class="card"><h3>Feature Engineering</h3><p class="muted">Variables statistiques (rendements, volatilité glissante, momentum, proxys de “surprise”) en Python (NumPy/Pandas).</p></div>
-            <div class="card"><h3>Modèle probabiliste</h3><p class="muted">Modèle de base (régression logistique) extensible vers des méthodes arborescentes; sorties en probabilités calibrées.</p></div>
-            <div class="card"><h3>Transformations dbt</h3><p class="muted">Modèles SQL reproductibles et tests (unicité, non-null, relations) produisant des tables fact/dim prêtes pour l’analyse.</p></div>
-            <div class="card"><h3>Backtests & métriques</h3><p class="muted">Évaluation offline : ROC/AUC, calibration, et métriques de performance (PnL, drawdown).</p></div>
-            <div class="card"><h3>Dashboard Power BI</h3><p class="muted">Pages interactives pour qualité du signal, segmentation par événement, et analyse risque/performance.</p></div>
+            <div class="card"><h3>Correction point-in-time</h3><p class="muted">Les variables ne peuvent lire que des données antérieures ou égales à <em>t</em>, via des fenêtres strictement rétrospectives ; les valeurs futures vivent dans une table distincte. Des assertions recalculent chaque valeur à partir de sa définition et font échouer le build en cas de divergence.</p></div>
+            <div class="card"><h3>Validation honnête</h3><p class="muted">Plis walk-forward à fenêtre croissante, jamais de découpage aléatoire, avec un embargo de 60 jours aligné sur le plus long historique de variable, afin qu’aucune fenêtre glissante de test n’atteigne les données d’entraînement.</p></div>
+            <div class="card"><h3>Publier un résultat négatif</h3><p class="muted">Chaque stratégie est comparée au portefeuille toujours investi et à une référence naïve de classe majoritaire. Le constat est que le modèle n’a aucun avantage exploitable, et il est publié plutôt qu’enterré.</p></div>
+            <div class="card"><h3>Tests contre l’échec silencieux</h3><p class="muted">Une fuite temporelle ne lève aucune erreur et ne change aucun compte de lignes ; elle gonfle simplement les métriques. 36 cas pytest et des invariants au niveau de la base, chacun vérifié en le brisant délibérément.</p></div>
+            <div class="card"><h3>Ingestion concurrente</h3><p class="muted">Les prix sont récupérés en parallèle avec asyncio et un sémaphore borné. Cela a introduit deux modes de défaillance silencieux, désormais couverts par des validations inter-actifs plutôt que ligne à ligne.</p></div>
+            <div class="card"><h3>Reproductible par construction</h3><p class="muted">L’ordre des étapes est déclaré comme dépendances Make et chaque étape recalcule ses propres sorties, si bien que reconstruire de zéro est le chemin normal. Chaque figure est générée depuis l’entrepôt, jamais exportée à la main.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Le constat qui méritait d’être rapporté</h2>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card">
+              <h3>Un vrai signal qui perd quand même de l’argent</h3>
+              <p class="muted">
+                La direction du lendemain n’a aucun signal : ROC-AUC d’environ 0,51, à cheval sur le hasard, exactement ce que l’efficience des marchés prédit pour des variables issues des seuls prix sur des FNB liquides. Les grands mouvements, eux, sont réellement prévisibles à environ 0,57, sur 14 des 15 instruments.
+              </p>
+              <p class="muted" style="margin-top:10px;">
+                Et cela ne se convertit pas. L’étiquette est <em>non signée</em> : elle sait qu’un grand mouvement arrive, mais pas dans quel sens, donc s’écarter renonce à autant de hausse que de baisse. Avoir raison sur la volatilité n’équivaut pas à détenir un avantage, et seul un backtest pouvait le montrer.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Calibration : classer n’est pas quantifier</h3>
+              <div style="border-radius:12px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,0.35);">
+                <img src="../../img/edmp-calibration.png" alt="Diagramme de fiabilité : probabilité prédite contre fréquence observée, pour la direction et les grands mouvements" style="width:100%;display:block;" />
+              </div>
+              <p class="muted" style="margin-top:10px;">
+                Le modèle ordonne correctement les journées mais exagère l’écart : il annonce que son dixième le plus turbulent est 5,1 fois plus risqué que son dixième le plus calme, alors que l’écart observé n’est que de 2,6 fois. Une règle à seuil exige que le classement soit juste ; une règle de dimensionnement exige que la valeur le soit. Ce modèle a le premier et pas la seconde.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -89,16 +120,15 @@
           <h2>Architecture</h2>
           <div class="grid grid-2" style="margin-top:16px;">
             <div class="card">
-              <h3>Données & Pipeline de modélisation</h3>
+              <h3>Entrepôt en couches</h3>
               <p class="muted">
-                Les jeux de données bruts (marché/événements) sont stockés dans PostgreSQL, enrichis via le feature engineering en Python, puis transformés avec dbt en schéma en étoile.
-                Les sorties du modèle (probabilités, métriques) sont réécrites en base pour une analyse reproductible.
+                Les données circulent dans un seul sens à travers trois schémas : <code>raw</code> tel qu’ingéré, <code>staging</code> nettoyé et ré-indexé sur des clés de substitution, <code>analytics</code> pour les variables, étiquettes, prédictions et résultats de backtest. Une barrière de validation entre raw et staging fait échouer le build sur des données invalides avant qu’elles n’atteignent une variable.
               </p>
             </div>
             <div class="card">
-              <h3>Analyse & Reporting</h3>
+              <h3>Ensuite : les événements, via un système d’agents</h3>
               <p class="muted">
-                Power BI se connecte au schéma analytics afin de visualiser distributions de probabilités, performance conditionnelle aux événements et résultats de backtests.
+                La couche événementielle n’est délibérément pas encore construite. Une variable événementielle ne vaut quelque chose que si l’on peut mesurer ce qu’elle apporte, et cela exige une référence honnête à laquelle se comparer. C’est cette référence. Les événements proviendront d’un système d’agents distinct extrayant des faits structurés et horodatés depuis les communiqués de la Fed et les publications macro.
               </p>
             </div>
           </div>

@@ -23,21 +23,22 @@ The website is built using static HTML/CSS and deployed through GitHub Pages.
 
 ## Featured Projects
 
-### Event-Driven Market Probability Engine (In Progress)
+### Event-Driven Market Probability Engine (Phases A–D complete)
 
-Quantitative research platform designed to estimate short-term market move probabilities around macroeconomic events.
+A layered PostgreSQL warehouse and a walk-forward-validated probability model, built to test honestly
+whether next-day ETF moves are predictable. Measured answer: no tradeable edge.
 
 Stack:
 - PostgreSQL
-- Python (NumPy, Pandas)
-- dbt
-- Power BI
+- Python (asyncio, pandas, psycopg, scikit-learn, matplotlib)
+- SQL window functions
+- Make, pytest
 
 Focus:
-- Reproducible data pipelines
-- Statistical feature engineering
-- Probabilistic modeling
-- Signal evaluation & visualization
+- Point-in-time correctness enforced by database-level assertions
+- Walk-forward validation with a purge/embargo
+- Backtesting against a hold-the-market benchmark
+- Reporting a negative result rather than burying it
 
 ---
 

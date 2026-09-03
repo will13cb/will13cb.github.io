@@ -26,9 +26,9 @@
         <div class="container hero">
           <div class="wrap" style="grid-template-columns:1fr;justify-items:center;text-align:center;">
             <div>
-              <span class="eyebrow">Personal Project · In Progress</span>
+              <span class="eyebrow">Personal Project · Phases A–D complete</span>
               <h1 class="name"><span>Event-Driven Market Probability Engine</span></h1>
-              <p class="subtitle">A quantitative research platform that estimates next-day market move probabilities around macro events using a reproducible data + modeling pipeline.</p>
+              <p class="subtitle">A reproducible research pipeline that estimates next-day market move probabilities, validates that estimate under conditions that do not flatter it, and reports the honest conclusion: the model has no tradeable edge.</p>
               <div class="cta-row" style="justify-content:center;">
                 <a
                   class="btn btn-primary"
@@ -50,21 +50,26 @@
             <div class="card">
               <h2>Summary</h2>
               <p class="muted">
-                End-to-end pipeline that ingests historical market data and event metadata, engineers statistical features, trains a probabilistic model, and visualizes signal quality and strategy outcomes in Power BI.
+                A layered PostgreSQL warehouse and a walk-forward-validated probability model, built to answer one question honestly: is there a tradeable edge in next-day ETF moves? The measured answer is no, and reporting that is the point. Most of the engineering exists to make the verdict trustworthy rather than to make it flattering.
               </p>
               <div class="bullets" style="margin-top:12px;">
-                <div class="bullet"><label>Role</label><div>Architecture, data engineering, modeling, visualization</div></div>
-                <div class="bullet"><label>Stack</label><div>PostgreSQL, Python (NumPy/Pandas, optional scikit-learn), dbt, Power BI, Git</div></div>
-                <div class="bullet"><label>Status</label><div>In progress (MVP pipeline + first dashboard in development)</div></div>
+                <div class="bullet"><label>Role</label><div>Architecture, data engineering, modeling, evaluation</div></div>
+                <div class="bullet"><label>Stack</label><div>PostgreSQL, Python (asyncio, pandas, psycopg, scikit-learn, matplotlib), SQL window functions, Make, pytest</div></div>
+                <div class="bullet"><label>Scale</label><div>15 ETFs · 32,295 rows · 2018–2026 · 36 tests · 6 database-level invariants</div></div>
+                <div class="bullet"><label>Status</label><div>Phases A–D complete. Calibration next, then event ingestion.</div></div>
               </div>
             </div>
             <div class="card">
-              <h2>Demo</h2>
-              <p class="muted">Coming soon</p>
-              <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,0.35);margin-top:8px;background:rgba(255,255,255,0.04);">
-                <!-- Optional: embed a public Power BI report later -->
-                <iframe src="" title="Event-Driven Market Probability Engine Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+              <h2>The result</h2>
+              <p class="muted">
+                Five expanding walk-forward folds with a 60-day embargo, then a backtest with transaction costs, benchmarked against simply holding the market. No strategy beats the benchmark.
+              </p>
+              <div style="border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 10px 28px rgba(0,0,0,0.35);">
+                <img src="../../img/edmp.png" alt="Cumulative return by strategy, each fold backtested separately, against an always-long benchmark" style="width:100%;display:block;" />
               </div>
+              <p class="muted" style="margin-top:10px;font-size:0.92em;">
+                Sharpe: 1.48 holding the market, 1.22 for the volatility filter, 0.66 for the directional rule.
+              </p>
             </div>
           </div>
         </div>
@@ -72,14 +77,40 @@
 
       <section>
         <div class="container">
-          <h2>Features</h2>
+          <h2>What it demonstrates</h2>
           <div class="grid grid-3" style="margin-top:16px;">
-            <div class="card"><h3>Data Ingestion</h3><p class="muted">Market prices + event metadata loaded into PostgreSQL with a clear raw/staging/analytics separation.</p></div>
-            <div class="card"><h3>Feature Engineering</h3><p class="muted">Statistical features (returns, rolling volatility, momentum, event “surprise” proxies) built in Python (NumPy/Pandas).</p></div>
-            <div class="card"><h3>Probabilistic Modeling</h3><p class="muted">Baseline probability model (logistic regression), extensible to tree-based methods; outputs calibrated probabilities.</p></div>
-            <div class="card"><h3>dbt Transformations</h3><p class="muted">Reproducible SQL models and tests (uniqueness, not-null, relationships) producing analytics-ready fact/dimension tables.</p></div>
-            <div class="card"><h3>Backtesting & Metrics</h3><p class="muted">Offline signal evaluation: ROC/AUC, calibration checks, and strategy performance metrics (PnL, drawdown).</p></div>
-            <div class="card"><h3>Power BI Dashboard</h3><p class="muted">Interactive pages for signal quality, event segmentation, and risk/performance analysis over time.</p></div>
+            <div class="card"><h3>Point-in-time correctness</h3><p class="muted">Features may only read data at or before <em>t</em>, using trailing-only window frames; forward-looking values live in a separate table. Assertions recompute each stored value from its definition and fail the build when the two disagree.</p></div>
+            <div class="card"><h3>Honest validation</h3><p class="muted">Walk-forward expanding folds, never a random split, with a 60-day purge/embargo matched to the longest feature lookback so no test row's rolling window reaches into training data.</p></div>
+            <div class="card"><h3>Reporting a negative result</h3><p class="muted">Every strategy scored against a hold-the-market benchmark and a naive majority-class baseline. The finding is that the model has no tradeable edge, and it is published rather than buried.</p></div>
+            <div class="card"><h3>Testing for silent failure</h3><p class="muted">Temporal leakage raises no error and changes no row count; it just quietly inflates the metrics. 36 pytest cases plus database-level invariants, each verified to fail by deliberately breaking it.</p></div>
+            <div class="card"><h3>Concurrent ingestion</h3><p class="muted">Prices are fetched concurrently with asyncio and a bounded semaphore. That introduced two silent failure modes, both now guarded by cross-asset validations rather than per-row checks.</p></div>
+            <div class="card"><h3>Reproducible by construction</h3><p class="muted">Stage order is declared as Make dependencies and every stage recomputes its own outputs, so rebuilding from scratch is the normal path. Every figure is generated from the warehouse, never exported by hand.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>The finding worth reporting</h2>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card">
+              <h3>A real signal that still loses money</h3>
+              <p class="muted">
+                Next-day direction has no signal: ROC-AUC ~0.51, straddling chance, exactly as market efficiency predicts for price-only features on liquid ETFs. Large moves are genuinely predictable at ~0.57, in 14 of 15 instruments.
+              </p>
+              <p class="muted" style="margin-top:10px;">
+                And it still does not convert. The label is <em>unsigned</em>: it knows a big move is coming but not which way, so stepping aside forgoes as much upside as downside. Being right about volatility is not the same as having an edge, and only a backtest could have shown that.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Calibration: ranking is not probability</h3>
+              <div style="border-radius:12px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,0.35);">
+                <img src="../../img/edmp-calibration.png" alt="Reliability diagram: predicted probability against realised frequency, for direction and large moves" style="width:100%;display:block;" />
+              </div>
+              <p class="muted" style="margin-top:10px;">
+                The model sorts days correctly but exaggerates the gap: it claims its most turbulent tenth is 5.1x riskier than its calmest, where only 2.6x occurred. A threshold rule needs the ranking to be right; a sizing rule needs the value to be right. This model has the first and not the second.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -89,16 +120,15 @@
           <h2>Architecture</h2>
           <div class="grid grid-2" style="margin-top:16px;">
             <div class="card">
-              <h3>Data & Modeling Pipeline</h3>
+              <h3>Layered warehouse</h3>
               <p class="muted">
-                Raw market/event datasets are stored in PostgreSQL, enriched with Python feature engineering, and transformed via dbt into a star schema.
-                Model outputs (probabilities, metrics) are written back to the database for reproducible analysis.
+                Data flows one way through three schemas: <code>raw</code> as ingested, <code>staging</code> cleaned and re-keyed onto surrogate ids, <code>analytics</code> for features, labels, predictions and backtest results. A validation gate between raw and staging fails the build on bad input before it can reach a feature.
               </p>
             </div>
             <div class="card">
-              <h3>Analytics & Reporting</h3>
+              <h3>Next: events, from an agent system</h3>
               <p class="muted">
-                Power BI connects to the analytics schema to visualize probability distributions, event-conditioned performance, and backtest results.
+                The event layer is not built yet, deliberately. An event feature is only worth something if you can measure what it adds, and that needs an honest baseline to measure against. This is that baseline. Events are intended to come from a separate agent system extracting structured, timestamped facts from FOMC statements and macro releases.
               </p>
             </div>
           </div>

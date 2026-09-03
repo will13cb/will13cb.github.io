@@ -42,6 +42,25 @@ Focus:
 
 ---
 
+### Financial Event Extraction (Design phase)
+
+An agent system that turns financial documents into structured, timestamped events, built around an
+evaluation harness rather than around the agent framework. SEC XBRL gives every extracted number an
+authoritative value to score against, which turns "the agent seems to work" into a measurement.
+
+Planned stack:
+- Python, PostgreSQL
+- EDGAR API, XBRL
+- LangGraph (stage 6, wrapping work that is already validated)
+
+Focus:
+- Ground truth before subjective judgement
+- Extraction accuracy measured against a regex baseline, with failure categories
+- Point-in-time discipline on documents (publication timestamp, initial print)
+- Feeds the event layer of the Event-Driven Market Probability Engine
+
+---
+
 ### MaVille — Java CLI Application
 
 Municipal management simulation system built with:

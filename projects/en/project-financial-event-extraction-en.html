@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project: Financial Event Extraction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="inner">
+        <a class="brand" href="../../index.html" aria-label="Home">
+          <div class="logo">W</div>
+          <span>William Caron-Bastarache</span>
+        </a>
+        <nav class="nav">
+          <a href="../../index.html#portfolio">← Back to Portfolio</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home">
+        <div class="container hero">
+          <div class="wrap" style="grid-template-columns:1fr;justify-items:center;text-align:center;">
+            <div>
+              <span class="eyebrow">Personal Project · Design phase, not yet built</span>
+              <h1 class="name"><span>Financial Event Extraction</span></h1>
+              <p class="subtitle">An agent system that turns financial documents into structured, timestamped events, scored against machine-readable ground truth. Its output is the event layer the Event-Driven Market Probability Engine is currently missing.</p>
+              <div class="cta-row" style="justify-content:center;">
+                <a class="btn btn-ghost" href="project-event-driven-market-probability-engine-en.html">See the pipeline it feeds</a>
+                <a class="btn btn-ghost" href="../../index.html#portfolio">Back to portfolio</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="grid grid-2">
+            <div class="card">
+              <h2>The premise</h2>
+              <p class="muted">
+                The differentiator is not the agent framework. "An agent that researches a topic and writes a report" is the 2026 equivalent of a React todo app, and the frameworks are a commodity. What almost nobody builds is an agent system with a real evaluation harness, and that is the entire reason to build this one.
+              </p>
+              <p class="muted" style="margin-top:10px;">
+                LLM agents fail exactly the way data pipelines do: plausible, confident, wrong, and nothing raised. That is the same pathology my other work is built to catch, so the same discipline applies. The question is never "did it run", it is "is the output believable, and how would I know".
+              </p>
+            </div>
+            <div class="card">
+              <h2>Structured ground truth is the unlock</h2>
+              <p class="muted">
+                Wherever a document ships machine-readable facts beside its prose, every number the model extracts has an authoritative value to check against. SEC filings carry XBRL: the model reads the text, XBRL holds the answer.
+              </p>
+              <p class="muted" style="margin-top:10px;">
+                That converts "the agent seems to work" into a measurement, scored against a plain regex baseline. If it cannot beat regex, that belongs in the README as a finding rather than being quietly dropped.
+              </p>
+              <div class="bullets" style="margin-top:12px;">
+                <div class="bullet"><label>Status</label><div>Design phase. Scope and build order set, nothing implemented.</div></div>
+                <div class="bullet"><label>Planned stack</label><div>Python, PostgreSQL, EDGAR API, XBRL, LangGraph (last, not first)</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Two verticals, one machinery</h2>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card">
+              <h3>Macro — first, because it needs no new instruments</h3>
+              <p class="muted">
+                FOMC statements and minutes, Fed speeches, BLS and CPI releases. These apply to index and sector ETFs, which is the universe the probability engine already holds, so this vertical plugs straight into its unbuilt event layer.
+              </p>
+              <p class="muted" style="margin-top:10px;">
+                FOMC statements are close to ideal to start with: short, published on a fixed schedule, deliberately formulaic, and changed sparingly. That makes a word-level diff between consecutive statements genuinely informative, and a structured hawkish/dovish delta per meeting a real feature rather than a vibe.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Corporate — same machinery, one more prerequisite</h3>
+              <p class="muted">
+                10-K, 10-Q, 8-K material events, Form 4 insider transactions, 13F holdings, earnings releases and calls. These apply to individual equities, so they need the downstream universe extended before they have anything to attach to.
+              </p>
+              <p class="muted" style="margin-top:10px;">
+                Form 4 filings are free on EDGAR, which makes "what executives say versus what they do with their own holdings" a far more tractable signal than anything gated behind transcript licensing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Target architecture</h2>
+          <div class="card" style="margin-top:16px;">
+            <h3>Target architecture</h3>
+<div style="overflow-x:auto;">
+                <svg viewBox="0 0 720 384" role="img" aria-label="A new document flows into a research coordinator, which dispatches it to a numeric agent, a language agent and a change agent; their results converge into a human research brief and structured events in SQL" style="width:100%;min-width:560px;height:auto;display:block;font-family:Inter,system-ui,sans-serif;">
+                  <defs>
+                    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8" />
+                    </marker>
+                  </defs>
+                  <g stroke="#94a3b8" stroke-width="1.4" fill="none" marker-end="url(#ar)">
+                    <path d="M360,56 L360,82" />
+                    <path d="M360,126 L360,146 M120,146 L120,172 M360,146 L360,172 M600,146 L600,172" />
+                    <path d="M235,274 L235,300 M485,274 L485,300" />
+                  </g>
+                  <g stroke="#94a3b8" stroke-width="1.4" fill="none">
+                    <path d="M120,146 L600,146" />
+                    <path d="M120,240 L120,274 M360,240 L360,274 M600,240 L600,274" />
+                    <path d="M120,274 L600,274" />
+                  </g>
+
+                  <rect x="190" y="16" width="340" height="40" rx="10" fill="#0b1020" stroke="#1f2a44" />
+                  <text x="360" y="41" text-anchor="middle" font-size="13" fill="#e5e7eb">New document (filing / release / statement)</text>
+
+                  <rect x="250" y="86" width="220" height="40" rx="10" fill="#0b1020" stroke="#06b6d4" />
+                  <text x="360" y="111" text-anchor="middle" font-size="13" fill="#e5e7eb">Research coordinator</text>
+
+                  <rect x="15" y="172" width="210" height="68" rx="10" fill="#0b1020" stroke="#1f2a44" />
+                  <text x="120" y="196" text-anchor="middle" font-size="13" fill="#e5e7eb">Numeric agent</text>
+                  <text x="120" y="215" text-anchor="middle" font-size="11" fill="#94a3b8">XBRL facts, actuals,</text>
+                  <text x="120" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">KPIs</text>
+
+                  <rect x="255" y="172" width="210" height="68" rx="10" fill="#0b1020" stroke="#1f2a44" />
+                  <text x="360" y="196" text-anchor="middle" font-size="13" fill="#e5e7eb">Language agent</text>
+                  <text x="360" y="215" text-anchor="middle" font-size="11" fill="#94a3b8">tone, hedging,</text>
+                  <text x="360" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">risk framing</text>
+
+                  <rect x="495" y="172" width="210" height="68" rx="10" fill="#0b1020" stroke="#a78bfa" />
+                  <text x="600" y="196" text-anchor="middle" font-size="13" fill="#e5e7eb">Change agent</text>
+                  <text x="600" y="215" text-anchor="middle" font-size="11" fill="#94a3b8">this document vs.</text>
+                  <text x="600" y="230" text-anchor="middle" font-size="11" fill="#94a3b8">the prior ones</text>
+
+                  <rect x="130" y="300" width="210" height="62" rx="10" fill="#0b1020" stroke="#1f2a44" />
+                  <text x="235" y="326" text-anchor="middle" font-size="13" fill="#e5e7eb">Research brief</text>
+                  <text x="235" y="345" text-anchor="middle" font-size="11" fill="#94a3b8">human-readable</text>
+
+                  <rect x="380" y="300" width="210" height="62" rx="10" fill="#0b1020" stroke="#06b6d4" />
+                  <text x="485" y="326" text-anchor="middle" font-size="13" fill="#e5e7eb">Structured events</text>
+                  <text x="485" y="345" text-anchor="middle" font-size="11" fill="#94a3b8">SQL, model-ready</text>
+                </svg>
+              </div>
+            <p class="muted" style="margin-top:12px;">
+              Two deliverables, useful separately. The brief is the demo artifact; the structured events are what a probability model consumes. Neither depends on the other existing.
+            </p>
+          </div>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card">
+              <h3>Three readers, two outputs</h3>
+              <p class="muted">
+                A coordinator dispatches each new document to a <strong>numeric agent</strong> (XBRL facts, actuals, KPIs), a <strong>language agent</strong> (tone, hedging, risk framing), and a <strong>change agent</strong> (this document against the prior ones). Results converge into two deliverables that are useful separately: a human-readable research brief, and structured events written to SQL.
+              </p>
+              <p class="muted" style="margin-top:10px;">
+                The second is the one that matters downstream. The probability engine's <code>raw.events</code> table already expects exactly this shape: a publication timestamp, an event type, and <code>actual</code> / <code>forecast</code> / <code>previous</code> values, from which a surprise measure falls out directly. Its pipeline can then align each event to an effective trading date and build event-conditional features on instruments it already holds. The one piece still open on that side is the event-to-asset mapping, which currently holds a placeholder.
+              </p>
+            </div>
+            <div class="card">
+              <h3>The change agent is the interesting one</h3>
+              <p class="muted">
+                Summarising a single document is a commodity. Detecting that "we continue to see very strong demand" became "demand remains healthy, although customers are becoming somewhat more cautious" is not, and the identical technique reads an FOMC statement dropping "patient". That requires a memory per entity rather than per document:
+              </p>
+              <div style="overflow-x:auto;margin-top:12px;">
+                <table style="width:100%;border-collapse:collapse;font-size:0.92em;">
+                  <thead>
+                    <tr style="text-align:left;">
+                      <th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">FOMC</th>
+                      <th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">Jan</th>
+                      <th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">Mar</th>
+                      <th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">May</th>
+                      <th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">Jun</th>
+                    </tr>
+                  </thead>
+                  <tbody class="muted">
+                    <tr><td style="padding:6px 10px;">hawkish</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">→</td><td style="padding:6px 10px;">↓</td><td style="padding:6px 10px;">↓</td></tr>
+                    <tr><td style="padding:6px 10px;">inflation</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">→</td><td style="padding:6px 10px;">↓</td></tr>
+                    <tr><td style="padding:6px 10px;">labour</td><td style="padding:6px 10px;">→</td><td style="padding:6px 10px;">→</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">↑</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="overflow-x:auto;margin-top:10px;"><table style="width:100%;border-collapse:collapse;font-size:0.92em;"><thead><tr style="text-align:left;"><th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">NVDA</th><th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">Q1</th><th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">Q2</th><th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">Q3</th><th style="padding:6px 10px;border-bottom:1px solid rgba(148,163,184,0.3);">Q4</th></tr></thead><tbody class="muted"><tr><td style="padding:6px 10px;">demand</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">→</td><td style="padding:6px 10px;">↓</td></tr><tr><td style="padding:6px 10px;">margins</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">→</td><td style="padding:6px 10px;">↓</td><td style="padding:6px 10px;">↓</td></tr><tr><td style="padding:6px 10px;">capex</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">↑</td><td style="padding:6px 10px;">↑</td></tr></tbody></table></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Build order</h2>
+          <p class="muted">Sequenced so each stage is measurable before the next one adds ambiguity. Ground truth first, subjective judgement last, orchestration only around things that already work.</p>
+          <div class="grid grid-3" style="margin-top:16px;">
+            <div class="card"><h3>1 · Ingestion, no LLM</h3><p class="muted">Poll the EDGAR API and the Fed/BLS release calendars, store raw documents with their publication timestamps, pull XBRL facts. Fully deterministic. This is the ground-truth layer everything else is scored against.</p></div>
+            <div class="card"><h3>2 · Extraction, scored</h3><p class="muted">The model reads numbers out of prose; XBRL already holds the answer. Report accuracy against a regex baseline and categorise the failures. The credibility experiment.</p></div>
+            <div class="card"><h3>3 · FOMC diffing</h3><p class="muted">The macro vertical and the cheapest path to something the probability engine can consume. Consecutive-statement diffs plus a structured hawkish/dovish delta. Small corpus, fixed schedule, no access problems.</p></div>
+            <div class="card"><h3>4 · Narrative extraction</h3><p class="muted">Demand language, pricing, risk framing, guidance. No ground truth here, so evaluation shifts to inter-run agreement and a hand-labelled sample.</p></div>
+            <div class="card"><h3>5 · Change detection</h3><p class="muted">Entity memory across documents. The actual product, and the part that is not a commodity.</p></div>
+            <div class="card"><h3>6 · Orchestration</h3><p class="muted">LangGraph wrapping stages that already work, with confidence-based routing to manual review rather than silently writing a guess. Sixth, not first.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Constraints taken seriously</h2>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card">
+              <h3>Deterministic wherever possible</h3>
+              <p class="muted">
+                SQL writes, formatting and validation are plain code. The model is reserved for what genuinely needs language understanding. Every step that does not require judgement is one that cannot hallucinate, cost money per call, or return something different on the next run.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Evaluation is a component, not a final step</h3>
+              <p class="muted">
+                Accuracy against ground truth, cost and latency per document, and named failure categories are measured continuously rather than reported once at the end. That is the difference between a portfolio piece and a demo: a demo shows that it worked once, a harness says how often it works and how it breaks.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Point-in-time discipline carries over</h3>
+              <p class="muted">
+                Each document is used as of its <em>publication</em> timestamp, never a restated or amended value. A filing's acceptance time is when the information became public; a macro release's initial print is what the market actually saw. Using revised data is the same class of error as any other lookahead bias.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Small samples, many candidate features</h3>
+              <p class="muted">
+                Quarterly filings give roughly four observations per company per year, and FOMC gives eight meetings. Both are small and correlated. Test twenty candidate features against one label and one will look significant on chance alone, which is easy to mistake for a discovery on a sample this thin.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Non-determinism, contained</h3>
+              <p class="muted">
+                Extraction is not repeatable and is not meant to be. Several models read each document, their mean becomes the event value, and the spread between them is a usable confidence measure. That non-determinism stays at the ingestion boundary, with raw responses stored, so everything downstream remains a deterministic function of what was stored.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Where the ground truth runs out</h3>
+              <p class="muted">
+                "Management confidence 0.82" is unfalsifiable as stated. Anything subjective is either reframed as a relative change against the same entity's prior document, or hand-labelled on a sample with agreement reported. Transcript access is the main open blocker, which is why transcripts are last and nothing before them depends on it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="card" style="max-width:820px;margin:0 auto;text-align:center;">
+            <h2>Contact Me</h2>
+            <p class="muted">Interested in this project? Write me.</p>
+            <div class="cta-row" style="justify-content:center;">
+              <a class="btn btn-primary" href="mailto:will13cb@gmail.com">will13cb@gmail.com</a>
+              <a class="btn btn-ghost" href="../../index.html#portfolio">Back to portfolio</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer">© <span id="y"></span> William Caron-Bastarache</div>
+      </section>
+    </main>
+
+    <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  </body>
+</html>

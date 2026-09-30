@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150" role="img" aria-label="Eight virtual pages mapping into three physical frames, with an evicted page written out to disk">
+  <defs><marker id="v1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker></defs>
+  <g fill="#0b1020" stroke="#1f2a44" stroke-width="1.6">
+    <rect x="8" y="10" width="52" height="14" rx="3"/><rect x="8" y="27" width="52" height="14" rx="3"/><rect x="8" y="44" width="52" height="14" rx="3"/><rect x="8" y="61" width="52" height="14" rx="3"/>
+    <rect x="8" y="78" width="52" height="14" rx="3"/><rect x="8" y="95" width="52" height="14" rx="3"/><rect x="8" y="112" width="52" height="14" rx="3"/><rect x="8" y="129" width="52" height="14" rx="3"/>
+  </g>
+  <g stroke="#94a3b8" stroke-width="1.4" fill="none" marker-end="url(#v1)">
+    <path d="M60,34 C96,34 100,42 128,42"/>
+    <path d="M60,68 C96,68 100,76 128,76"/>
+    <path d="M60,119 C96,119 100,110 128,110"/>
+  </g>
+  <g stroke="#475569" stroke-width="1.2" fill="none" stroke-dasharray="3 3">
+    <path d="M60,17 C94,17 104,38 126,40"/><path d="M60,51 C94,51 104,72 126,74"/><path d="M60,102 C94,102 104,106 126,108"/>
+  </g>
+  <g fill="#0b1020" stroke="#06b6d4" stroke-width="2.2">
+    <rect x="130" y="30" width="58" height="24" rx="5"/><rect x="130" y="64" width="58" height="24" rx="5"/><rect x="130" y="98" width="58" height="24" rx="5"/>
+  </g>
+  <g fill="#06b6d4" opacity="0.75"><rect x="138" y="39" width="30" height="6" rx="2"/><rect x="138" y="73" width="22" height="6" rx="2"/><rect x="138" y="107" width="34" height="6" rx="2"/></g>
+  <circle cx="182" cy="70" r="4" fill="#a78bfa"/>
+  <path d="M188,110 C204,110 206,122 206,126" stroke="#64748b" stroke-width="1.4" fill="none" stroke-dasharray="3 3" marker-end="url(#v1)"/>
+  <g fill="#0b1020" stroke="#475569" stroke-width="1.8">
+    <ellipse cx="206" cy="130" rx="22" ry="7"/>
+    <path d="M184,130 L184,140 a22,7 0 0 0 44,0 L228,130"/>
+  </g>
+</svg>

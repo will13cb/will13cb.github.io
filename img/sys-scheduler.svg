@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150" role="img" aria-label="A queue of waiting processes passing through a lock into two processor cores">
+  <defs><marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker></defs>
+  <g fill="#0b1020" stroke="#1f2a44" stroke-width="1.8">
+    <rect x="8" y="22" width="62" height="17" rx="4"/><rect x="8" y="45" width="62" height="17" rx="4"/><rect x="8" y="68" width="62" height="17" rx="4"/><rect x="8" y="91" width="62" height="17" rx="4"/><rect x="8" y="114" width="62" height="17" rx="4"/>
+  </g>
+  <g fill="#334155"><rect x="16" y="28" width="26" height="5" rx="2"/><rect x="16" y="51" width="34" height="5" rx="2"/><rect x="16" y="74" width="20" height="5" rx="2"/><rect x="16" y="97" width="30" height="5" rx="2"/><rect x="16" y="120" width="24" height="5" rx="2"/></g>
+  <path d="M70,76 L102,76" stroke="#94a3b8" stroke-width="1.6" fill="none" marker-end="url(#c1)"/>
+  <rect x="106" y="60" width="26" height="22" rx="4" fill="#0b1020" stroke="#a78bfa" stroke-width="2"/>
+  <path d="M113,60 a6,6 0 0 1 12,0" stroke="#a78bfa" stroke-width="2" fill="none"/>
+  <circle cx="119" cy="71" r="3" fill="#a78bfa"/>
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none" marker-end="url(#c1)">
+    <path d="M132,68 C154,68 158,48 178,48"/><path d="M132,76 C154,76 158,102 178,102"/>
+  </g>
+  <g fill="#0b1020" stroke="#06b6d4" stroke-width="2.2"><circle cx="204" cy="48" r="22"/><circle cx="204" cy="102" r="22"/></g>
+  <g fill="#06b6d4"><rect x="194" y="42" width="20" height="4" rx="2"/><rect x="194" y="50" width="13" height="4" rx="2"/><rect x="194" y="96" width="20" height="4" rx="2"/><rect x="194" y="104" width="16" height="4" rx="2"/></g>
+</svg>

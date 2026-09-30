@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150" role="img" aria-label="A command line feeding three processes chained together by pipes">
+  <defs><marker id="s1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker></defs>
+  <path d="M12,26 l8,7 l-8,7" stroke="#06b6d4" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#334155">
+    <rect x="30" y="28" width="34" height="9" rx="3"/><rect x="70" y="28" width="22" height="9" rx="3"/><rect x="98" y="28" width="40" height="9" rx="3"/><rect x="144" y="28" width="26" height="9" rx="3"/>
+  </g>
+  <path d="M120,48 L120,64" stroke="#94a3b8" stroke-width="1.6" fill="none" marker-end="url(#s1)"/>
+  <g fill="#0b1020" stroke="#06b6d4" stroke-width="2">
+    <rect x="8" y="70" width="60" height="38" rx="9"/><rect x="90" y="70" width="60" height="38" rx="9"/><rect x="172" y="70" width="60" height="38" rx="9"/>
+  </g>
+  <g fill="#94a3b8"><circle cx="38" cy="89" r="4"/><circle cx="120" cy="89" r="4"/><circle cx="202" cy="89" r="4"/></g>
+  <g stroke="#a78bfa" stroke-width="2" fill="none" marker-end="url(#s1)">
+    <path d="M68,84 L88,84"/><path d="M150,84 L170,84"/>
+  </g>
+  <g stroke="#a78bfa" stroke-width="2" fill="none" opacity="0.55">
+    <path d="M68,95 L88,95"/><path d="M150,95 L170,95"/>
+  </g>
+  <g fill="#475569"><rect x="20" y="124" width="36" height="7" rx="3"/><rect x="102" y="124" width="36" height="7" rx="3"/><rect x="184" y="124" width="36" height="7" rx="3"/></g>
+</svg>

@@ -28,7 +28,7 @@
             <div>
               <span class="eyebrow">Projet personnel · En planification</span>
               <h1 class="name"><span>Renseignement financier multi-sources</span></h1>
-              <p class="subtitle">Un système agentique en conception qui lit les documents officiels et les commentaires informels qui les entourent, produit une note de recherche et un panel de variables point-in-time, alimente l’Event-Driven Market Probability Engine, et se fait juger par un backtest pré-enregistré avant de passer en direct.</p>
+              <p class="subtitle">Un système agentique en conception qui lit les documents officiels et les commentaires informels qui les entourent, produit une note de recherche et un panel de variables point-in-time, alimente l’Event-Driven Market Probability Engine, et qu’un backtest pré-enregistré juge avant la mise en production.</p>
               <div class="cta-row" style="justify-content:center;">
                 <a class="btn btn-ghost" href="projet-event-driven-market-probability-engine-fr.html">Voir le moteur qu’il alimente</a>
                 <a class="btn btn-ghost" href="../../index-fr.html#portfolio">Retour au portfolio</a>
@@ -47,13 +47,13 @@
                 Deux types de sources parlent du même événement. Les documents officiels énoncent la politique ; les journalistes, les forums et les entrevues disent ce que les gens en ont retenu. Lire les deux rend l’écart entre eux mesurable.
               </p>
               <p class="muted" style="margin-top:10px;">
-                Le système transforme les deux en faits structurés, en tire un panel de variables quotidien et une note lisible, puis confie le panel à un modèle probabiliste chargé de décider si tout cela mérite qu’on agisse.
+                Le système transforme les deux en faits structurés, en tire un panel de variables quotidien et une note lisible, puis confie le panel à un modèle probabiliste chargé de décider s’il y a matière à agir.
               </p>
             </div>
             <div class="card">
               <h2>La prémisse</h2>
               <p class="muted">
-                « Un agent qui fait une recherche et rédige un rapport » est l’équivalent en 2026 d’une application de tâches en React. Ce qui rend celui-ci digne d’être construit, c’est que sa sortie doit survivre à un backtest pré-enregistré : il y a donc un chiffre à la fin, et il n’est pas discutable.
+                « Un agent qui fait une recherche et rédige un rapport » est l’équivalent en 2026 d’une application de tâches en React. Ce qui justifie de le construire, c’est que sa sortie doit survivre à un backtest pré-enregistré : il y a donc un chiffre à la fin, et il n’est pas discutable.
               </p>
               <div class="bullets" style="margin-top:12px;">
                 <div class="bullet"><label>Statut</label><div>En planification. Architecture et ordre de développement définis.</div></div>
@@ -141,7 +141,7 @@
               </svg>
             </div>
             <p class="muted" style="margin-top:12px;">
-              Un pipeline de données contenant des agents, et non un système d’agents auquel on a attaché des données. Dagster possède le graphe ; LangGraph ne possède que le sous-graphe d’extraction, le seul endroit où l’agentivité justifie son coût.
+              Un pipeline de données contenant des agents, et non un système d’agents auquel on a attaché des données. Dagster pilote le graphe ; LangGraph ne couvre que le sous-graphe d’extraction, le seul endroit où l’agentivité justifie son coût.
             </p>
           </div>
         </div>
@@ -159,12 +159,12 @@
                 <tbody>
                   <tr><td class="key">L0 · Adaptateurs</td><td>Un dépôt, un article, un message Reddit et une entrevue transcrite arrivent tous dans la même enveloppe, ancrée sur l’heure de publication et étiquetée d’un niveau de source, du réglementaire au social.</td></tr>
                   <tr><td class="key">L1 · Normalisation</td><td>Regrouper les couvertures quasi identiques en grappes, résoudre les entités et les intervenants, et associer chaque horodatage à la séance où il peut réellement être utilisé.</td></tr>
-                  <tr><td class="key">L2 · Couche d’agents</td><td>Un coordinateur oriente chaque document vers un agent numérique, linguistique, de changement ou d’assertion. Sorties structurées uniquement, les champs peu fiables étant escaladés puis mis en file de revue plutôt qu’écrits comme une supposition.</td></tr>
-                  <tr><td class="key">L3 · Magasin de faits</td><td>Une ligne par position extraite : entité, thème, moment, niveau de source, confiance et l’extrait dont elle provient.</td></tr>
-                  <tr><td class="key">L4 · Variables</td><td>Un panel quotidien rétrospectif : position, volume, désaccord entre sources, déplacement thématique, nouveauté, et l’écart entre les officiels et la foule.</td></tr>
+                  <tr><td class="key">L2 · Couche d’agents</td><td>Un coordinateur oriente chaque document vers un agent numérique, linguistique, de changement ou d’assertion. Sorties structurées uniquement, les champs peu fiables étant confiés à un modèle plus puissant puis mis en file de revue plutôt qu’enregistrés comme une supposition.</td></tr>
+                  <tr><td class="key">L3 · Magasin de faits</td><td>Une ligne par orientation extraite : entité, thème, moment, niveau de source, confiance et l’extrait dont elle provient.</td></tr>
+                  <tr><td class="key">L4 · Variables</td><td>Un panel quotidien rétrospectif : orientation, volume, désaccord entre sources, déplacement thématique, nouveauté, et l’écart entre les officiels et la foule.</td></tr>
                   <tr><td class="key">L5 · Rapport</td><td>Un gabarit déterministe au-dessus du magasin de faits. La prose est générée, mais le rapport ne peut énoncer aucun chiffre que l’entrepôt ne détient pas.</td></tr>
                   <tr><td class="key">L6 · Intégration EDMP</td><td>Deux CSV, l’un pour les événements et l’autre pour les variables narratives. Ce système produit des fichiers plutôt que d’écrire dans la base du moteur.</td></tr>
-                  <tr><td class="key">L7 · Backtest</td><td>Variables de prix seules contre prix plus narratif, en walk-forward, pré-enregistré avant d’être exécuté.</td></tr>
+                  <tr><td class="key">L7 · Backtest</td><td>Variables de prix seules contre prix et narratif, en walk-forward, pré-enregistré avant d’être exécuté.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -178,7 +178,7 @@
             <div class="card">
               <h2>Ce que montre le rapport</h2>
               <p class="muted">
-                Une grille de positions : chaque thème suivi au fil des réunions récentes, si bien que la case intéressante est celle qui a changé. Résumer un communiqué isolé est une commodité ; remarquer que le Comité a abandonné le mot « patient » exige une mémoire par entité.
+                Une grille des orientations : chaque thème suivi au fil des réunions récentes, si bien que la case intéressante est celle qui a changé. Résumer un communiqué isolé n’a rien de distinctif ; remarquer que le Comité a abandonné le mot « patient » exige une mémoire par entité.
               </p>
               <div class="tbl-wrap">
                 <table class="tbl" style="min-width:0;">
@@ -200,7 +200,7 @@
                 L’écart entre ce que disent les décideurs et ce que croit la foule : sources officielles et agences d’un côté, réseaux sociaux de l’autre, même thème, même jour. Rien dans le moteur actuel ne peut l’exprimer, et cela n’a de sens que si la déduplication sous-jacente est correcte.
               </p>
               <p class="muted" style="margin-top:10px;">
-                À ses côtés : position rétrospective, volume de grappes, désaccord entre sources, déplacement thématique, nouveauté, et la surprise de politique monétaire implicite aux contrats à terme. Fenêtre la plus longue : 30 jours, à l’intérieur de l’embargo de 60 jours du moteur.
+                À ses côtés : orientation rétrospective, volume de grappes, désaccord entre sources, déplacement thématique, nouveauté, et la surprise de politique monétaire déduite des contrats à terme. Fenêtre la plus longue : 30 jours, à l’intérieur de l’embargo de 60 jours du moteur.
               </p>
             </div>
           </div>
@@ -209,19 +209,19 @@
 
       <section>
         <div class="container">
-          <h2>Comment ça se fait juger</h2>
+          <h2>Comment le système est évalué</h2>
           <p class="muted">Trois paliers, dans l’ordre, pour qu’un échec soit attribuable à une couche plutôt qu’à l’ensemble.</p>
           <div class="grid grid-3" style="margin-top:16px;">
             <div class="card">
               <h3>1 · L’extraction est-elle juste ?</h3>
               <p class="muted">
-                Les nombres comparés à la valeur publiée faisant autorité. Le langage comparé à un échantillon annoté à la main, plus l’accord entre exécutions répétées et entre deux modèles différents.
+                Les nombres comparés à la valeur publiée faisant autorité. Le langage comparé à un échantillon annoté à la main, ainsi que l’accord entre exécutions répétées et entre deux modèles différents.
               </p>
             </div>
             <div class="card">
               <h3>2 · Les variables sont-elles honnêtes ?</h3>
               <p class="muted">
-                Mélangez les variables à l’intérieur d’une date et la performance doit s’effondrer. Décalez-les d’un jour vers l’avenir et elle devrait s’améliorer ; si la version non décalée l’égale déjà, il y a fuite.
+                Mélangez les variables au sein d’une même date et la performance doit s’effondrer. Décalez-les d’un jour vers l’avenir et elle devrait s’améliorer ; si la version non décalée l’égale déjà, il y a fuite.
               </p>
             </div>
             <div class="card">
@@ -234,7 +234,7 @@
           <div class="card" style="margin-top:16px;">
             <h3>Un résultat nul est l’issue attendue, et le backtest n’est pas la fin</h3>
             <p class="muted">
-              Un communiqué du FOMC est réintégré aux prix en quelques secondes : une étiquette au lendemain demande donc aux variables de prédire ce que le marché a absorbé la veille en après-midi. Avec huit réunions par an et une dizaine de variables candidates, l’une paraîtra significative par pur hasard, d’où un test figé avant d’être exécuté.
+              Un communiqué du FOMC est intégré dans les prix en quelques secondes : une étiquette à l’horizon du lendemain demande donc aux variables de prédire ce que le marché a absorbé la veille en après-midi. Avec huit réunions par an et une dizaine de variables candidates, l’une paraîtra significative par pur hasard, d’où un test figé avant d’être exécuté.
             </p>
             <p class="muted" style="margin-top:10px;">
               C’est aussi pourquoi le plan ne s’arrête pas là. Le même panel est destiné à tourner en direct, en évaluant chaque document dès sa publication plutôt qu’en attendant la clôture suivante, sur un horizon assez court pour que l’information soit encore en jeu. L’étude hors ligne sert à décider quoi mettre en production.
@@ -255,7 +255,7 @@
                 <tbody>
                   <tr><td class="key">Orchestration</td><td class="key">Dagster</td><td>Partitions par date et reprises, dont le retraitement point-in-time a besoin et qu’un Makefile ne sait pas exprimer.</td></tr>
                   <tr><td class="key">Agents</td><td class="key">LangGraph</td><td>Le sous-graphe d’extraction uniquement, encapsulé comme une étape du pipeline.</td></tr>
-                  <tr><td class="key">Entrepôt</td><td class="key">Postgres + pgvector</td><td>Les plongements vivent à côté des faits plutôt que dans un second système.</td></tr>
+                  <tr><td class="key">Entrepôt</td><td class="key">Postgres + pgvector</td><td>Les plongements résident à côté des faits plutôt que dans un second système.</td></tr>
                   <tr><td class="key">Modèles</td><td class="key">Claude + GLM / Qwen</td><td>Une seule interface, choisie par tâche, pour comparer coût et accord au lieu de les deviner.</td></tr>
                   <tr><td class="key">Transcription</td><td class="key">WhisperX</td><td>Entrevues et conférences de presse. La séparation des locuteurs distingue le président du journaliste.</td></tr>
                   <tr><td class="key">Modélisation</td><td class="key">scikit-learn, puis LightGBM</td><td>Correspond à la référence du moteur ; les arbres pour les termes d’interaction.</td></tr>
@@ -274,7 +274,7 @@
             <div class="card">
               <h3>Phase 0 · Fondations</h3>
               <p class="muted">
-                Squelette du pipeline, enveloppe de document partagée, classe de base des adaptateurs, déduplication, résolution d’entités, fonction de date de séance, interface de modèles et file de revue. Construites génériquement, mais toutes exercées par la phase 1.
+                Squelette du pipeline, enveloppe de document partagée, classe de base des adaptateurs, déduplication, résolution d’entités, fonction de date de séance, interface de modèles et file de revue. Construites génériquement, mais toutes mises à l’épreuve par la phase 1.
               </p>
             </div>
             <div class="card">
@@ -286,7 +286,7 @@
             <div class="card">
               <h3>Phase 2 · En direct</h3>
               <p class="muted">
-                Faire tourner le même pipeline en temps réel, en évaluant les documents dès leur publication. Ensuite, la verticale corporative réutilise tout ce qui précède et n’ajoute que de nouveaux adaptateurs et de nouveaux thèmes.
+                Faire tourner le même pipeline en temps réel, en évaluant les documents dès leur publication. Ensuite, la verticale entreprises réutilise tout ce qui précède et n’ajoute que de nouveaux adaptateurs et de nouveaux thèmes.
               </p>
             </div>
           </div>

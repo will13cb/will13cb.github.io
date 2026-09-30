@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150" role="img" aria-label="Two columns of nodes joined by pairings, with one crossing pair marked unstable">
+  <g stroke="#3b82f6" stroke-width="2.4" fill="none">
+    <path d="M62,28 H178"/><path d="M62,62 H178"/><path d="M62,130 H178"/>
+  </g>
+  <g stroke="#ea580c" stroke-width="2.4" fill="none" stroke-dasharray="5 4">
+    <path d="M62,96 C110,96 130,130 178,96"/>
+  </g>
+  <g stroke="#ea580c" stroke-width="2.2" fill="none" opacity="0.85">
+    <path d="M62,96 L178,130" stroke-dasharray="5 4"/>
+  </g>
+  <g fill="#0b1020" stroke="#64748b" stroke-width="2">
+    <circle cx="52" cy="28" r="11"/><circle cx="52" cy="62" r="11"/><circle cx="52" cy="96" r="11"/><circle cx="52" cy="130" r="11"/>
+    <circle cx="188" cy="28" r="11"/><circle cx="188" cy="62" r="11"/><circle cx="188" cy="96" r="11"/><circle cx="188" cy="130" r="11"/>
+  </g>
+  <g fill="#475569">
+    <circle cx="52" cy="28" r="3.5"/><circle cx="52" cy="62" r="3.5"/><circle cx="52" cy="96" r="3.5"/><circle cx="52" cy="130" r="3.5"/>
+    <circle cx="188" cy="28" r="3.5"/><circle cx="188" cy="62" r="3.5"/><circle cx="188" cy="96" r="3.5"/><circle cx="188" cy="130" r="3.5"/>
+  </g>
+</svg>

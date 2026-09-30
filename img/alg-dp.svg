@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150" role="img" aria-label="A greedy path taking the first choice at each step beside a fully filled dynamic programming table">
+  <g fill="#0b1020" stroke="#1f2a44" stroke-width="1.5">
+    <rect x="12" y="24" width="22" height="22" rx="3"/><rect x="36" y="24" width="22" height="22" rx="3"/><rect x="60" y="24" width="22" height="22" rx="3"/><rect x="84" y="24" width="22" height="22" rx="3"/>
+    <rect x="12" y="48" width="22" height="22" rx="3"/><rect x="36" y="48" width="22" height="22" rx="3"/><rect x="60" y="48" width="22" height="22" rx="3"/><rect x="84" y="48" width="22" height="22" rx="3"/>
+    <rect x="12" y="72" width="22" height="22" rx="3"/><rect x="36" y="72" width="22" height="22" rx="3"/><rect x="60" y="72" width="22" height="22" rx="3"/><rect x="84" y="72" width="22" height="22" rx="3"/>
+    <rect x="12" y="96" width="22" height="22" rx="3"/><rect x="36" y="96" width="22" height="22" rx="3"/><rect x="60" y="96" width="22" height="22" rx="3"/><rect x="84" y="96" width="22" height="22" rx="3"/>
+  </g>
+  <g fill="#ea580c" opacity="0.85">
+    <rect x="15" y="27" width="16" height="16" rx="2"/><rect x="39" y="51" width="16" height="16" rx="2"/><rect x="63" y="75" width="16" height="16" rx="2"/><rect x="87" y="99" width="16" height="16" rx="2"/>
+  </g>
+  <path d="M23,46 L47,48 M47,70 L71,72 M71,94 L95,96" stroke="#ea580c" stroke-width="2" fill="none"/>
+  <g fill="#0b1020" stroke="#1f2a44" stroke-width="1.5">
+    <rect x="134" y="24" width="22" height="22" rx="3"/><rect x="158" y="24" width="22" height="22" rx="3"/><rect x="182" y="24" width="22" height="22" rx="3"/><rect x="206" y="24" width="22" height="22" rx="3"/>
+    <rect x="134" y="48" width="22" height="22" rx="3"/><rect x="158" y="48" width="22" height="22" rx="3"/><rect x="182" y="48" width="22" height="22" rx="3"/><rect x="206" y="48" width="22" height="22" rx="3"/>
+    <rect x="134" y="72" width="22" height="22" rx="3"/><rect x="158" y="72" width="22" height="22" rx="3"/><rect x="182" y="72" width="22" height="22" rx="3"/><rect x="206" y="72" width="22" height="22" rx="3"/>
+    <rect x="134" y="96" width="22" height="22" rx="3"/><rect x="158" y="96" width="22" height="22" rx="3"/><rect x="182" y="96" width="22" height="22" rx="3"/><rect x="206" y="96" width="22" height="22" rx="3"/>
+  </g>
+  <g fill="#3b82f6">
+    <rect x="137" y="27" width="16" height="16" rx="2" opacity="0.25"/><rect x="161" y="27" width="16" height="16" rx="2" opacity="0.4"/><rect x="185" y="27" width="16" height="16" rx="2" opacity="0.5"/><rect x="209" y="27" width="16" height="16" rx="2" opacity="0.6"/>
+    <rect x="137" y="51" width="16" height="16" rx="2" opacity="0.4"/><rect x="161" y="51" width="16" height="16" rx="2" opacity="0.5"/><rect x="185" y="51" width="16" height="16" rx="2" opacity="0.65"/><rect x="209" y="51" width="16" height="16" rx="2" opacity="0.75"/>
+    <rect x="137" y="75" width="16" height="16" rx="2" opacity="0.5"/><rect x="161" y="75" width="16" height="16" rx="2" opacity="0.65"/><rect x="185" y="75" width="16" height="16" rx="2" opacity="0.8"/><rect x="209" y="75" width="16" height="16" rx="2" opacity="0.9"/>
+    <rect x="137" y="99" width="16" height="16" rx="2" opacity="0.6"/><rect x="161" y="99" width="16" height="16" rx="2" opacity="0.75"/><rect x="185" y="99" width="16" height="16" rx="2" opacity="0.9"/><rect x="209" y="99" width="16" height="16" rx="2"/>
+  </g>
+  <path d="M118,54 L118,88" stroke="#334155" stroke-width="1.5" stroke-dasharray="3 4"/>
+</svg>

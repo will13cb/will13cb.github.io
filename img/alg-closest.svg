@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" width="240" height="150" role="img" aria-label="A cloud of points split by a vertical dividing line with a narrow strip around it, the closest pair highlighted">
+  <rect x="104" y="14" width="32" height="122" fill="#3b82f6" opacity="0.09"/>
+  <line x1="120" y1="12" x2="120" y2="138" stroke="#3b82f6" stroke-width="1.8" stroke-dasharray="5 4"/>
+  <g fill="#475569">
+    <circle cx="26" cy="38" r="4"/><circle cx="52" cy="92" r="4"/><circle cx="40" cy="120" r="4"/><circle cx="72" cy="28" r="4"/>
+    <circle cx="86" cy="66" r="4"/><circle cx="64" cy="54" r="4"/><circle cx="30" cy="70" r="4"/><circle cx="92" cy="120" r="4"/>
+    <circle cx="152" cy="34" r="4"/><circle cx="178" cy="78" r="4"/><circle cx="198" cy="44" r="4"/><circle cx="164" cy="116" r="4"/>
+    <circle cx="212" cy="102" r="4"/><circle cx="190" cy="128" r="4"/><circle cx="216" cy="70" r="4"/><circle cx="146" cy="88" r="4"/>
+  </g>
+  <g fill="#ea580c">
+    <circle cx="112" cy="58" r="5.5"/><circle cx="129" cy="70" r="5.5"/>
+  </g>
+  <line x1="112" y1="58" x2="129" y2="70" stroke="#ea580c" stroke-width="2.4"/>
+</svg>

@@ -12,7 +12,7 @@ Source for my personal portfolio. It presents:
 
 - Selected software and systems projects
 - Quantitative research work
-- Academic background (B.Sc. Computer Science, Université de Montréal, 2024 to 2027 expected)
+- Academic background (B.Sc. Computer Science, Université de Montréal, 2024 to 2028 expected)
 - Technical skills and professional experience
 
 Static HTML and CSS with a small amount of vanilla JavaScript, deployed from the `main` branch.

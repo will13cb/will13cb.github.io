@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- SEO -->
+    <title>Estimer des revenus par cartes de crédit | William Caron-Bastarache</title>
+    <meta name="description" content="Estimer le revenu trimestriel à partir de 158 031 transactions par carte pour PolyFinances. Erreur absolue moyenne de 0,54 % sur deux trimestres réservés." />
+    <link rel="canonical" href="https://williamcaronbastarache.com/projects/fr/projet-nowcast-revenus-fr.html" />
+    <link rel="alternate" hreflang="en" href="https://williamcaronbastarache.com/projects/en/project-revenue-nowcast-en.html" />
+    <link rel="alternate" hreflang="fr" href="https://williamcaronbastarache.com/projects/fr/projet-nowcast-revenus-fr.html" />
+    <link rel="alternate" hreflang="x-default" href="https://williamcaronbastarache.com/projects/en/project-revenue-nowcast-en.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="William Caron-Bastarache" />
+    <meta property="og:locale" content="fr_CA" />
+    <meta property="og:title" content="Estimer des revenus par cartes de crédit | William Caron-Bastarache" />
+    <meta property="og:description" content="Estimer le revenu trimestriel à partir de 158 031 transactions par carte pour PolyFinances. Erreur absolue moyenne de 0,54 % sur deux trimestres réservés." />
+    <meta property="og:url" content="https://williamcaronbastarache.com/projects/fr/projet-nowcast-revenus-fr.html" />
+    <meta property="og:image" content="https://williamcaronbastarache.com/img/og-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- /SEO -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="inner">
+        <a class="brand" href="../../index-fr.html" aria-label="Accueil">
+          <div class="logo">W</div>
+          <span>William Caron-Bastarache</span>
+        </a>
+        <nav class="nav">
+          <a href="../../index-fr.html#portfolio">← Retour au portfolio</a>
+        </nav>
+        <div class="lang" aria-label="Sélection de langue">
+          <a class="lang-fr active" href="projet-nowcast-revenus-fr.html" hreflang="fr" lang="fr" aria-current="page">FR</a>
+          <a class="lang-en" href="../en/project-revenue-nowcast-en.html" hreflang="en" lang="en">EN</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="home">
+        <div class="container hero">
+          <div class="wrap">
+            <div>
+              <span class="eyebrow">PolyFinances · Étude de cas</span>
+              <h1 class="name"><span>Estimer le revenu d'une entreprise à partir de données de cartes de crédit</span></h1>
+              <p class="subtitle">
+                Estimer le revenu trimestriel de trois fabricants d'électronique grand public à partir de
+                158 031 transactions par carte effectuées par un panel de 2 500 personnes. Erreur absolue
+                moyenne de 0,54 % sur deux trimestres mis de côté dès le départ, alors que le banc d'essai
+                annonçait 0,83 %.
+              </p>
+              <div class="cta-row" style="justify-content:center;">
+                <a class="btn btn-primary" href="#result">Le résultat</a>
+                <a class="btn btn-ghost" href="https://github.com/will13cb/credit-card-revenue-nowcast" target="_blank" rel="noopener noreferrer">Les carnets sur GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="grid grid-2">
+            <div class="card">
+              <h2>De quoi il s'agit</h2>
+              <p class="muted">
+                Une étude de cas réalisée pour le club d'investissement PolyFinances de Polytechnique
+                Montréal, dans le cadre de la sélection de l'équipe pour la Rotman International Trading
+                Competition. L'énoncé : un panel de transactions par carte est fourni, et il faut en tirer le
+                revenu trimestriel d'Apple, de Samsung et de Google avant la publication de ces trimestres.
+              </p>
+              <p class="muted">
+                <strong>Les données sont synthétiques.</strong> Elles ont été générées et fournies par le
+                club, et elles ne décrivent pas les véritables entreprises. Les chiffres de cette page ne
+                disent rien d'Apple, de Samsung ni de Google. Ce qui est réel, c'est la méthode : le même
+                problème de calibration d'un panel vers une population que traitent les équipes de données
+                alternatives.
+              </p>
+            </div>
+            <div class="card">
+              <h2>Comment le travail a été évalué</h2>
+              <p class="muted">
+                Deux trimestres ont été mis de côté avant toute modélisation, de sorte que la comparaison
+                finale ne pouvait être faite qu'une seule fois. Un banc d'essai glissant sur les trimestres
+                antérieurs a fixé l'attente au préalable.
+              </p>
+              <div class="bullets">
+                <div class="bullet"><label>Contexte</label><div>PolyFinances, Polytechnique Montréal. Sélection de l'équipe RITC.</div></div>
+                <div class="bullet"><label>Données</label><div>158 031 transactions synthétiques, panel de 2 500 consommateurs, fournies par le club.</div></div>
+                <div class="bullet"><label>Outils</label><div>Python, pandas, Jupyter</div></div>
+                <div class="bullet"><label>Résultat</label><div>Erreur absolue moyenne de 0,54 % sur les deux trimestres réservés. Les six estimations tombent dans leur intervalle.</div></div>
+                <div class="bullet"><label>Code</label><div><a href="https://github.com/will13cb/credit-card-revenue-nowcast" target="_blank" rel="noopener noreferrer">github.com/will13cb/credit-card-revenue-nowcast</a>. Les carnets contiennent leurs sorties, ils se lisent donc sur GitHub sans être exécutés.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="traps">
+        <div class="container">
+          <h2>Ce qui clochait dans les données</h2>
+          <p class="muted" style="max-width:780px;">
+            L'essentiel du travail est là. Trois défauts avaient été glissés dans le fichier de transactions,
+            et chacun fausse l'estimation d'une manière différente. Les repérer valait davantage que tous les
+            choix de modélisation faits ensuite.
+          </p>
+
+          <div class="sys">
+            <div class="sys-fig"><img src="../../img/nowcast-trap-cents.svg" alt="Une colonne de montants dont quelques lignes sont cent fois plus grandes que les autres" /></div>
+            <div>
+              <span class="sys-num">01</span>
+              <h3>Des montants enregistrés en cents</h3>
+              <p class="muted">
+                Environ une transaction Apple sur vingt est stockée en cents plutôt qu'en dollars, et paraît
+                donc cent fois trop élevée. Mesuré sur le fichier : 4,76 % des lignes Apple, contre 0,62 %
+                pour Samsung et 0,56 % pour Google. C'est ce qui en fait un piège, puisque le défaut touche
+                presque uniquement une entreprise et ne fausse que son total.
+              </p>
+            </div>
+          </div>
+
+          <div class="sys">
+            <div class="sys-fig"><img src="../../img/nowcast-trap-vendor.svg" alt="Une colonne de fournisseurs dont environ un tiers des cases sont vides" /></div>
+            <div>
+              <span class="sys-num">02</span>
+              <h3>Un fournisseur qui disparaît</h3>
+              <p class="muted">
+                Le champ du fournisseur est vide sur 36,3 % des lignes Pixel, soit 19 033 sur 52 501.
+                Supprimer ces lignes ferait perdre le tiers des ventes de Google. Le nom du produit, lui, est
+                toujours présent : le fournisseur peut donc être reconstitué au lieu d'être écarté.
+              </p>
+            </div>
+          </div>
+
+          <div class="sys">
+            <div class="sys-fig"><img src="../../img/nowcast-trap-negative.svg" alt="Des montants répartis autour d'une ligne de zéro, dont deux barres passent sous cette ligne" /></div>
+            <div>
+              <span class="sys-num">03</span>
+              <h3>Des montants négatifs</h3>
+              <p class="muted">
+                5 420 lignes, soit 3,4 % du fichier, portent un montant négatif, jusqu'à -127 859. Un
+                remboursement a sa place dans un chiffre de revenu, un négatif de cette ampleur n'en a pas, et
+                il faut distinguer les deux plutôt que de tout additionner.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="grid grid-2">
+            <div class="card">
+              <h2>Un modèle volontairement petit</h2>
+              <p class="muted">
+                Le revenu vaut approximativement les ventes du panel multipliées par un ratio propre à chaque
+                entreprise, puisque le panel représente une fraction fixe du marché. L'estimation finale fait
+                la moyenne de deux façons d'obtenir ce ratio : la moyenne sur tous les trimestres passés, et
+                le ratio du même trimestre un an plus tôt, qui porte la saisonnalité.
+              </p>
+              <p class="muted">
+                Rien de plus élaboré n'était justifié. Avec douze trimestres par entreprise, un modèle plus
+                gros ajusterait du bruit.
+              </p>
+            </div>
+            <div class="card">
+              <h2>Le nettoyage validé sans la réponse</h2>
+              <p class="muted">
+                Chaque décision de nettoyage a été vérifiée sur la seule année 2022, où le revenu publié est
+                exactement proportionnel aux ventes nettoyées du panel. Retirer n'importe quelle correction
+                brise cette proportionnalité, ce qui fournit un test qui ne touche jamais aux trimestres
+                réservés.
+              </p>
+              <p class="muted">
+                Ce point compte plus qu'il n'y paraît. Ajuster le nettoyage sur les trimestres que l'on
+                cherche à prédire est la façon la plus simple de produire un chiffre qui a fière allure et ne
+                veut rien dire.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="result">
+        <div class="container">
+          <h2>Le résultat</h2>
+          <p class="muted" style="max-width:780px;">
+            Le revenu publié par trimestre, avec les deux trimestres réservés ombrés et l'estimation
+            marquée. Le pic du quatrième trimestre correspond au temps des Fêtes, et c'est précisément ce
+            qu'une simple tendance manquerait.
+          </p>
+          <div class="card" style="margin-top:14px;">
+            <picture>
+              <source media="(max-width: 820px)" srcset="../../img/nowcast-chart-fr-stacked.svg" />
+              <img src="../../img/nowcast-chart-fr.svg" alt="Trois panneaux, un par entreprise, montrant le revenu trimestriel publié de 2022T1 à 2024T4 avec les estimations des deux trimestres réservés et leurs intervalles d'incertitude" style="width:100%;display:block;" />
+            </picture>
+          </div>
+
+          <div class="tbl-wrap" style="margin-top:18px;">
+            <table class="tbl">
+              <thead>
+                <tr><th>Entreprise</th><th>Trimestre</th><th>Estimation (G$)</th><th>Intervalle</th><th>Réel</th><th>Erreur</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="key">Apple</td><td>2024T3</td><td>84,54</td><td>82,93 à 86,21</td><td>84,25</td><td>+0,34 %</td></tr>
+                <tr><td class="key">Apple</td><td>2024T4</td><td>110,06</td><td>107,97 à 112,24</td><td>110,61</td><td>-0,50 %</td></tr>
+                <tr><td class="key">Samsung</td><td>2024T3</td><td>53,34</td><td>52,32 à 54,39</td><td>53,05</td><td>+0,54 %</td></tr>
+                <tr><td class="key">Samsung</td><td>2024T4</td><td>73,30</td><td>71,91 à 74,75</td><td>73,83</td><td>-0,72 %</td></tr>
+                <tr><td class="key">Google</td><td>2024T3</td><td>42,60</td><td>41,79 à 43,45</td><td>42,38</td><td>+0,52 %</td></tr>
+                <tr><td class="key">Google</td><td>2024T4</td><td>55,29</td><td>54,24 à 56,38</td><td>54,93</td><td>+0,65 %</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="muted" style="margin-top:10px;font-size:14px;">
+            Les intervalles valent plus ou moins deux erreurs-types du banc d'essai. Les six valeurs réelles
+            s'y trouvent.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2>Ce que disent les chiffres</h2>
+          <div class="grid grid-3" style="margin-top:14px;">
+            <div class="card">
+              <h3>Les trimestres réservés étaient les plus faciles</h3>
+              <p class="muted">
+                Le banc d'essai glissant, sur 18 prévisions, donne 0,83 % en moyenne. Les deux trimestres
+                réservés arrivent à 0,54 %. La lecture honnête est que ces derniers trimestres se sont avérés
+                plus cléments que la moyenne, et non que la méthode s'est améliorée. C'est 0,83 % qu'il faut
+                retenir.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Ce sont les données de cartes qui travaillent</h3>
+              <p class="muted">
+                Un modèle de référence qui ignore les transactions et se contente de prolonger le revenu
+                publié est environ quatre fois moins précis. Cet écart est la seule chose qui justifie de
+                constituer le panel, et c'est la comparaison qui mérite d'être rapportée.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Une correction porte presque tout</h3>
+              <p class="muted">
+                En annulant les décisions une à une : laisser le défaut des cents en place fait passer
+                l'erreur de 0,54 % à 7,18 %, soit plus de dix fois. Les autres corrections pèsent beaucoup
+                moins.
+              </p>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:16px;">
+            <h3>Pourquoi ces deux défauts se comportent si différemment</h3>
+            <p class="muted">
+              Les fournisseurs manquants ne coûtent presque rien, alors que le défaut des cents coûte tout, et
+              la raison n'est pas que l'un serait plus gros que l'autre. Un défaut stable d'un trimestre à
+              l'autre, comme la même proportion de lignes Pixel sans fournisseur chaque trimestre, est absorbé
+              lors de la calibration du ratio : il décale les ventes du panel d'un facteur constant, que le
+              ratio annule discrètement. Un défaut dont l'ampleur change d'un trimestre à l'autre ne s'annule
+              pas, car aucun ratio unique ne peut absorber une cible mouvante. Seul le nettoyage élimine
+              celui-là.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="card" style="max-width:820px;margin:0 auto;text-align:center;">
+            <h2>Me contacter</h2>
+            <p class="muted">Ce projet vous intéresse ? Écrivez-moi.</p>
+            <div class="cta-row" style="justify-content:center;">
+              <a class="btn btn-primary" href="mailto:will13cb@gmail.com">will13cb@gmail.com</a>
+              <a class="btn btn-ghost" href="../../index-fr.html#portfolio">Retour au portfolio</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer">© <span id="y"></span> William Caron-Bastarache</div>
+      </section>
+    </main>
+
+    <script>
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

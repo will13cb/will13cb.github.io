@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240" role="img" aria-label="A quarterly revenue line with seasonal spikes, ending in a shaded forecast region where an estimate marker sits on the curve">
+  <defs>
+    <radialGradient id="nbg" cx="22%" cy="18%" r="92%">
+      <stop offset="0%" stop-color="#12203a"/><stop offset="60%" stop-color="#0b1020"/><stop offset="100%" stop-color="#080b14"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="240" fill="url(#nbg)"/>
+  <g stroke="rgba(148,163,184,0.14)" stroke-width="1">
+    <path d="M60,52 H600 M60,100 H600 M60,148 H600"/>
+  </g>
+  <rect x="470" y="26" width="130" height="180" fill="rgba(148,163,184,0.10)"/>
+  <path d="M60,206 H600" stroke="rgba(148,163,184,0.35)" stroke-width="1.4"/>
+  <path d="M60,26 V206" stroke="rgba(148,163,184,0.35)" stroke-width="1.4"/>
+  <polyline points="88,178 133,180 178,168 223,96 268,162 313,158 358,148 403,74 448,154 493,150 538,128 583,44"
+            fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#94a3b8">
+    <circle cx="88" cy="178" r="3.4"/><circle cx="133" cy="180" r="3.4"/><circle cx="178" cy="168" r="3.4"/>
+    <circle cx="223" cy="96" r="3.4"/><circle cx="268" cy="162" r="3.4"/><circle cx="313" cy="158" r="3.4"/>
+    <circle cx="358" cy="148" r="3.4"/><circle cx="403" cy="74" r="3.4"/><circle cx="448" cy="154" r="3.4"/>
+  </g>
+  <g stroke="#3b82f6" stroke-width="3" stroke-linecap="round" opacity=".6">
+    <line x1="493" y1="136" x2="493" y2="164"/><line x1="486" y1="136" x2="500" y2="136"/><line x1="486" y1="164" x2="500" y2="164"/>
+    <line x1="583" y1="30" x2="583" y2="58"/><line x1="576" y1="30" x2="590" y2="30"/><line x1="576" y1="58" x2="590" y2="58"/>
+  </g>
+  <g fill="#3b82f6" stroke="#080b14" stroke-width="2.5">
+    <path d="M493,141 L502,150 L493,159 L484,150 Z"/>
+    <path d="M583,35 L592,44 L583,53 L574,44 Z"/>
+  </g>
+</svg>

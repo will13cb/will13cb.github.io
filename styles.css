@@ -899,7 +899,7 @@ section[id] { scroll-margin-top: 120px; }
   margin: 16px 0 4px;
 }
 .stat {
-  flex: 1 1 130px;
+  flex: 1 1 190px;
   background: rgba(148, 163, 184, 0.06);
   border: 1px solid var(--ring);
   border-radius: 10px;
@@ -910,15 +910,36 @@ section[id] { scroll-margin-top: 120px; }
   font-size: 26px;
   line-height: 1.1;
   font-weight: 800;
-  color: #fcd34d;
+  color: var(--ink);
 }
-.stat.ok b { color: var(--muted); }
+/* Amber is a status colour here, reserved for a number that is itself the
+   problem (the corrupted AUC). It must not be used for ordinary figures. */
+.stat.warn b { color: #fcd34d; }
+/* Unit shown beside the figure, so a tile reads on its own. */
+.stat b i {
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: 7px;
+}
 .stat span {
   display: block;
   margin-top: 4px;
   font-size: 12.5px;
   color: var(--muted);
 }
+/* Optional second line: what the number actually refers to. */
+.stat .d {
+  margin-top: 7px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #7f8da8;
+}
+
+/* Tiles that carry a sentence each read better stacked than wrapped 2+1. */
+.stats.stack { flex-direction: column; }
+.stats.stack .stat { flex: 1 1 auto; }
 
 .guard {
   margin-top: 14px;
@@ -936,5 +957,10 @@ section[id] { scroll-margin-top: 120px; }
   color: #cbd5e1;
 }
 
-.bug-hero { display: grid; grid-template-columns: 1fr 300px; gap: 22px; align-items: start; }
-@media (max-width: 880px) { .bug-hero { grid-template-columns: 1fr; } }
+
+/* Below ~560px the fixed 130px label column leaves too little room for the
+   value, which then wraps to one word per line. Stack the label above it. */
+@media (max-width: 560px) {
+  .bullet { grid-template-columns: 1fr; gap: 4px; align-items: start; }
+  .bullet label { font-size: 12.5px; letter-spacing: 0.04em; text-transform: uppercase; }
+}

@@ -88,24 +88,21 @@
               <div style="border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 10px 28px rgba(0,0,0,0.35);">
                 <img src="../../img/edmp.png" alt="Cumulative return by strategy, each fold backtested separately, against an always-long benchmark" style="width:100%;display:block;" />
               </div>
-              <p class="muted" style="margin-top:10px;font-size:0.92em;">
-                Sharpe: 1.48 holding the market, 1.22 for the volatility filter, 0.66 for the directional rule.
-              </p>
+              <div class="stats stack">
+                <div class="stat">
+                  <b>1.48 <i>Sharpe</i></b><span>Holding the market</span>
+                  <div class="d">Hold all 15 ETFs every day. The benchmark, and the thing to beat. 75 trades.</div>
+                </div>
+                <div class="stat">
+                  <b>0.66 <i>Sharpe</i></b><span>Directional rule</span>
+                  <div class="d">Go long when the model puts the chance of an up day above 55%, short when it falls below 45%, flat in between. 1,221 trades to underperform doing nothing.</div>
+                </div>
+                <div class="stat">
+                  <b>1.22 <i>Sharpe</i></b><span>Volatility filter</span>
+                  <div class="d">Hold the market, but step aside to cash whenever the model puts the chance of a large move above 10%. Never takes a view on which way. 898 trades.</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="container">
-          <h2>What it demonstrates</h2>
-          <div class="grid grid-3" style="margin-top:16px;">
-            <div class="card"><h3>Point-in-time correctness</h3><p class="muted">Features may only read data at or before <em>t</em>, using trailing-only window frames; forward-looking values live in a separate table. Assertions recompute each stored value from its definition and fail the build when the two disagree.</p></div>
-            <div class="card"><h3>Honest validation</h3><p class="muted">Walk-forward expanding folds, never a random split, with a 60-day purge/embargo matched to the longest feature lookback so no test row's rolling window reaches into training data.</p></div>
-            <div class="card"><h3>Reporting a negative result</h3><p class="muted">Every strategy scored against a hold-the-market benchmark and a naive majority-class baseline. The finding is that the model has no tradeable edge, and it is published rather than buried.</p></div>
-            <div class="card"><h3>Testing for silent failure</h3><p class="muted">Temporal leakage raises no error and changes no row count; it just quietly inflates the metrics. 36 pytest cases plus database-level invariants, each verified to fail by deliberately breaking it.</p></div>
-            <div class="card"><h3>Concurrent ingestion</h3><p class="muted">Prices are fetched concurrently with asyncio and a bounded semaphore. That introduced two silent failure modes, both now guarded by cross-asset validations rather than per-row checks.</p></div>
-            <div class="card"><h3>Reproducible by construction</h3><p class="muted">Stage order is declared as Make dependencies and every stage recomputes its own outputs, so rebuilding from scratch is the normal path. Every figure is generated from the warehouse, never exported by hand.</p></div>
           </div>
         </div>
       </section>
@@ -136,7 +133,6 @@
         </div>
       </section>
 
-
       <section id="bugs">
         <div class="container">
           <span class="eyebrow">Errors, and what caught them</span>
@@ -148,9 +144,7 @@
           </p>
 
           <div class="card" style="margin-top:16px;">
-            <div class="bug-hero">
-              <div>
-                <span class="bug-badge missed">Tests: missed</span>
+              <span class="bug-badge missed">Tests: missed</span>
                 <h3 style="margin:0 0 10px;">One ticker's prices, fifteen times</h3>
                 <p class="muted">
                   <code>yf.download()</code> stages results in module-level state and resets it on entry, so
@@ -167,25 +161,16 @@
                   volatility as XLE, an energy fund, to five decimal places.
                 </p>
                 <div class="stats">
-                  <div class="stat"><b>0.67</b><span>large-move AUC, corrupted</span></div>
-                  <div class="stat ok"><b>0.59</b><span>recorded baseline</span></div>
-                  <div class="stat ok"><b>0</b><span>tests failed</span></div>
+                  <div class="stat warn"><b>0.67 <i>AUC</i></b><span>large-move, corrupted</span></div>
+                  <div class="stat"><b>0.59 <i>AUC</i></b><span>recorded baseline</span></div>
+                  <div class="stat"><b>0</b><span>tests failed</span></div>
                 </div>
                 <p class="guard">
                   <b>Guard:</b> a cross-asset fingerprint in <code>sql/10_validations.sql</code> hashes each
                   symbol's whole series and rejects any two that match. Every other check in the project
                   validates within one asset; this is the only one that looks across them.
                 </p>
-              </div>
-              <div>
-                <img src="../../img/edmp-duplicate-series.svg" alt="Two groups of fifteen bars: on the left every bar is identical, on the right every bar differs" style="width:100%;display:block;border-radius:10px;" />
-                <p class="muted" style="font-size:12.5px;margin-top:8px;">
-                  Per-symbol volatility, corrupted against fixed. Fifteen identical values beside fifteen
-                  different ones. Schematic, not measured: the corrupted warehouse no longer exists.
-                </p>
-              </div>
             </div>
-          </div>
 
           <div class="grid grid-3" style="margin-top:16px;">
             <div class="card">
@@ -243,19 +228,29 @@
 
       <section>
         <div class="container">
-          <h2>Architecture</h2>
-          <div class="grid grid-2" style="margin-top:16px;">
-            <div class="card">
-              <h3>Layered warehouse</h3>
-              <p class="muted">
-                Data flows one way through three schemas: <code>raw</code> as ingested, <code>staging</code> cleaned and re-keyed onto surrogate ids, <code>analytics</code> for features, labels, predictions and backtest results. A validation gate between raw and staging fails the build on bad input before it can reach a feature.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Next: events, from an agent system</h3>
-              <p class="muted">
-                The event layer is not built yet, deliberately. An event feature is only worth something if you can measure what it adds, and that needs an honest baseline to measure against. This is that baseline. Events are intended to come from a separate agent system extracting structured, timestamped facts from FOMC statements and macro releases.
-              </p>
+          <h2>How it is built</h2>
+          <div class="card" style="margin-top:14px;">
+            <div class="bullets">
+              <div class="bullet">
+                <label>Warehouse</label>
+                <div>Data flows one way through three schemas: <code>raw</code> as ingested, <code>staging</code> cleaned and re-keyed onto surrogate ids, <code>analytics</code> for features, labels, predictions and backtest results. A validation gate between raw and staging fails the build on bad input before it can reach a feature.</div>
+              </div>
+              <div class="bullet">
+                <label>Point-in-time</label>
+                <div>Features may only read data at or before <em>t</em>, using trailing-only window frames. Forward-looking values live in a separate table, and assertions recompute each stored value from its definition, failing the build when the two disagree.</div>
+              </div>
+              <div class="bullet">
+                <label>Validation</label>
+                <div>Walk-forward expanding folds, never a random split, with a 60-day purge and embargo matched to the longest feature lookback so no test row's rolling window can reach into training data.</div>
+              </div>
+              <div class="bullet">
+                <label>Reproducibility</label>
+                <div>Stage order is declared as Make dependencies and every stage recomputes its own outputs, so a full rebuild is the normal path. Every figure on this page is generated from the warehouse, never exported by hand.</div>
+              </div>
+              <div class="bullet">
+                <label>Next</label>
+                <div>The event layer is not built yet, deliberately. An event feature is only worth something if you can measure what it adds, and that needs an honest baseline to measure against. This is that baseline. Events are intended to come from a separate agent system extracting structured, timestamped facts from FOMC statements and macro releases.</div>
+              </div>
             </div>
           </div>
         </div>

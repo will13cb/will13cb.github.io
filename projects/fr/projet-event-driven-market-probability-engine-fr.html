@@ -88,24 +88,21 @@
               <div style="border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 10px 28px rgba(0,0,0,0.35);">
                 <img src="../../img/edmp.png" alt="Rendement cumulé par stratégie, chaque pli testé séparément, comparé au portefeuille toujours investi" style="width:100%;display:block;" />
               </div>
-              <p class="muted" style="margin-top:10px;font-size:0.92em;">
-                Sharpe : 1,48 en détenant le marché, 1,22 pour le filtre de volatilité, 0,66 pour la règle directionnelle.
-              </p>
+              <div class="stats stack">
+                <div class="stat">
+                  <b>1,48 <i>Sharpe</i></b><span>Détenir le marché</span>
+                  <div class="d">Détenir les 15 FNB tous les jours. La référence, et ce qu'il faut battre. 75 transactions.</div>
+                </div>
+                <div class="stat">
+                  <b>0,66 <i>Sharpe</i></b><span>Règle directionnelle</span>
+                  <div class="d">Acheter quand le modèle donne plus de 55 % de chances à une journée en hausse, vendre à découvert sous 45 %, rester à l'écart entre les deux. 1 221 transactions pour faire moins bien que ne rien faire.</div>
+                </div>
+                <div class="stat">
+                  <b>1,22 <i>Sharpe</i></b><span>Filtre de volatilité</span>
+                  <div class="d">Détenir le marché, mais passer en liquidités dès que le modèle estime à plus de 10 % la probabilité d'un grand mouvement. Ne prend jamais position sur le sens. 898 transactions.</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="container">
-          <h2>Ce que le projet démontre</h2>
-          <div class="grid grid-3" style="margin-top:16px;">
-            <div class="card"><h3>Correction point-in-time</h3><p class="muted">Les variables ne peuvent lire que des données antérieures ou égales à <em>t</em>, via des fenêtres strictement rétrospectives ; les valeurs futures résident dans une table distincte. Des assertions recalculent chaque valeur à partir de sa définition et font échouer le build en cas de divergence.</p></div>
-            <div class="card"><h3>Validation honnête</h3><p class="muted">Plis walk-forward à fenêtre croissante, jamais de découpage aléatoire, avec un embargo de 60 jours aligné sur le plus long historique de variable, afin qu’aucune fenêtre glissante de test n’atteigne les données d’entraînement.</p></div>
-            <div class="card"><h3>Publier un résultat négatif</h3><p class="muted">Chaque stratégie est comparée au portefeuille toujours investi et à une référence naïve de classe majoritaire. Le constat est que le modèle n’a aucun avantage exploitable, et il est publié plutôt qu’enterré.</p></div>
-            <div class="card"><h3>Tests contre l’échec silencieux</h3><p class="muted">Une fuite temporelle ne lève aucune erreur et ne change aucun compte de lignes ; elle gonfle simplement les métriques. 36 cas pytest et des invariants au niveau de la base, chacun vérifié en le brisant délibérément.</p></div>
-            <div class="card"><h3>Ingestion concurrente</h3><p class="muted">Les prix sont récupérés en parallèle avec asyncio et un sémaphore borné. Cela a introduit deux modes de défaillance silencieux, désormais couverts par des validations inter-actifs plutôt que ligne à ligne.</p></div>
-            <div class="card"><h3>Reproductible par construction</h3><p class="muted">L’ordre des étapes est déclaré comme dépendances Make et chaque étape recalcule ses propres sorties, si bien que reconstruire de zéro est le chemin normal. Chaque figure est générée depuis l’entrepôt, jamais exportée à la main.</p></div>
           </div>
         </div>
       </section>
@@ -136,7 +133,6 @@
         </div>
       </section>
 
-
       <section id="bugs">
         <div class="container">
           <span class="eyebrow">Les erreurs, et ce qui les a attrapées</span>
@@ -149,9 +145,7 @@
           </p>
 
           <div class="card" style="margin-top:16px;">
-            <div class="bug-hero">
-              <div>
-                <span class="bug-badge missed">Tests : non détecté</span>
+              <span class="bug-badge missed">Tests : non détecté</span>
                 <h3 style="margin:0 0 10px;">Les prix d'un seul titre, quinze fois</h3>
                 <p class="muted">
                   <code>yf.download()</code> entrepose ses résultats dans un état global au module et le
@@ -171,9 +165,9 @@
                   cinquième décimale.
                 </p>
                 <div class="stats">
-                  <div class="stat"><b>0,67</b><span>AUC grands mouvements, corrompu</span></div>
-                  <div class="stat ok"><b>0,59</b><span>référence consignée</span></div>
-                  <div class="stat ok"><b>0</b><span>test en échec</span></div>
+                  <div class="stat warn"><b>0,67 <i>AUC</i></b><span>grands mouvements, corrompu</span></div>
+                  <div class="stat"><b>0,59 <i>AUC</i></b><span>référence consignée</span></div>
+                  <div class="stat"><b>0</b><span>test en échec</span></div>
                 </div>
                 <p class="guard">
                   <b>Garde-fou :</b> une empreinte inter-actifs dans <code>sql/10_validations.sql</code>
@@ -181,17 +175,7 @@
                   autres vérifications du projet valident à l'intérieur d'un actif ; celle-ci est la seule
                   qui regarde d'un actif à l'autre.
                 </p>
-              </div>
-              <div>
-                <img src="../../img/edmp-duplicate-series.svg" alt="Deux groupes de quinze barres : à gauche toutes les barres sont identiques, à droite elles diffèrent toutes" style="width:100%;display:block;border-radius:10px;" />
-                <p class="muted" style="font-size:12.5px;margin-top:8px;">
-                  Volatilité par symbole, version corrompue contre version corrigée. Quinze valeurs
-                  identiques à côté de quinze valeurs différentes. Schéma, et non mesure : l'entrepôt
-                  corrompu n'existe plus.
-                </p>
-              </div>
             </div>
-          </div>
 
           <div class="grid grid-3" style="margin-top:16px;">
             <div class="card">
@@ -251,19 +235,29 @@
 
       <section>
         <div class="container">
-          <h2>Architecture</h2>
-          <div class="grid grid-2" style="margin-top:16px;">
-            <div class="card">
-              <h3>Entrepôt en couches</h3>
-              <p class="muted">
-                Les données circulent dans un seul sens à travers trois schémas : <code>raw</code> tel qu’ingéré, <code>staging</code> nettoyé et ré-indexé sur des clés de substitution, <code>analytics</code> pour les variables, étiquettes, prédictions et résultats de backtest. Une barrière de validation entre raw et staging fait échouer le build sur des données invalides avant qu’elles n’atteignent une variable.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Ensuite : les événements, via un système d’agents</h3>
-              <p class="muted">
-                La couche événementielle n’est délibérément pas encore construite. Une variable événementielle ne vaut quelque chose que si l’on peut mesurer ce qu’elle apporte, et cela exige une référence honnête à laquelle se comparer. C’est cette référence. Les événements proviendront d’un système d’agents distinct extrayant des faits structurés et horodatés depuis les communiqués de la Fed et les publications macro.
-              </p>
+          <h2>Comment c'est construit</h2>
+          <div class="card" style="margin-top:14px;">
+            <div class="bullets">
+              <div class="bullet">
+                <label>Entrepôt</label>
+                <div>Les données circulent dans un seul sens à travers trois schémas : <code>raw</code> tel qu'ingéré, <code>staging</code> nettoyé et ré-indexé sur des identifiants de substitution, <code>analytics</code> pour les variables, les étiquettes, les prédictions et les résultats de backtest. Une barrière de validation entre raw et staging fait échouer la construction avant qu'une donnée fautive n'atteigne une variable.</div>
+              </div>
+              <div class="bullet">
+                <label>Antériorité</label>
+                <div>Une variable ne peut lire que des données antérieures ou égales à <em>t</em>, au moyen de fenêtres strictement rétrospectives. Les valeurs tournées vers l'avenir vivent dans une table distincte, et des assertions recalculent chaque valeur stockée à partir de sa définition, faisant échouer la construction en cas de désaccord.</div>
+              </div>
+              <div class="bullet">
+                <label>Validation</label>
+                <div>Des plis glissants et expansifs, jamais une découpe aléatoire, avec une purge et un embargo de 60 jours alignés sur le plus long historique utilisé par une variable, de sorte qu'aucune fenêtre d'une ligne de test ne puisse atteindre les données d'entraînement.</div>
+              </div>
+              <div class="bullet">
+                <label>Reproductibilité</label>
+                <div>L'ordre des étapes est déclaré comme des dépendances Make et chaque étape recalcule ses propres sorties : la reconstruction complète est donc le chemin normal. Chaque figure de cette page est générée depuis l'entrepôt, jamais exportée à la main.</div>
+              </div>
+              <div class="bullet">
+                <label>La suite</label>
+                <div>La couche d'événements n'est pas encore construite, délibérément. Une variable d'événement ne vaut quelque chose que si l'on peut mesurer ce qu'elle apporte, et cela exige une référence honnête à laquelle se comparer. C'est cette référence. Les événements proviendront d'un système agentique distinct qui extrait des faits structurés et horodatés des communiqués de la Fed et des publications macroéconomiques.</div>
+              </div>
             </div>
           </div>
         </div>

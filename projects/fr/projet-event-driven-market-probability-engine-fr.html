@@ -136,6 +136,119 @@
         </div>
       </section>
 
+
+      <section id="bugs">
+        <div class="container">
+          <span class="eyebrow">Les erreurs, et ce qui les a attrapées</span>
+          <h2 style="margin-top:12px;">Des bogues que tous les tests ont laissés passer</h2>
+          <p class="muted" style="max-width:760px;">
+            Trois de ces quatre bogues ont traversé la suite de tests sans rien déclencher. Dans un pipeline
+            de données, un chiffre faux ressemble exactement à un chiffre juste : chaque défaillance
+            ci-dessous est donc accompagnée du garde-fou qui fait désormais échouer la construction si elle
+            revient.
+          </p>
+
+          <div class="card" style="margin-top:16px;">
+            <div class="bug-hero">
+              <div>
+                <span class="bug-badge missed">Tests : non détecté</span>
+                <h3 style="margin:0 0 10px;">Les prix d'un seul titre, quinze fois</h3>
+                <p class="muted">
+                  <code>yf.download()</code> entrepose ses résultats dans un état global au module et le
+                  réinitialise à chaque entrée : des appels concurrents écrasent donc l'accumulateur les uns
+                  des autres, et chaque tâche peut recevoir les données d'un autre titre. L'entrepôt a fini
+                  par contenir les prix d'un seul titre sous les quinze symboles.
+                </p>
+                <p class="muted">
+                  Rien n'a échoué. Une série dupliquée reste cohérente avec elle-même : toutes les assertions
+                  par actif tenaient, le nombre de lignes était bon et aucune valeur nulle n'apparaissait. Le
+                  seul symptôme était que le modèle devenait <em>meilleur</em>, ce qui est le symptôme le
+                  plus dangereux qui soit.
+                </p>
+                <p class="muted">
+                  Le problème a été repéré en remarquant que SHY, un fonds de bons du Trésor d'un à trois
+                  ans, affichait la même volatilité que XLE, un fonds du secteur de l'énergie, jusqu'à la
+                  cinquième décimale.
+                </p>
+                <div class="stats">
+                  <div class="stat"><b>0,67</b><span>AUC grands mouvements, corrompu</span></div>
+                  <div class="stat ok"><b>0,59</b><span>référence consignée</span></div>
+                  <div class="stat ok"><b>0</b><span>test en échec</span></div>
+                </div>
+                <p class="guard">
+                  <b>Garde-fou :</b> une empreinte inter-actifs dans <code>sql/10_validations.sql</code>
+                  hache la série complète de chaque symbole et rejette toute paire identique. Toutes les
+                  autres vérifications du projet valident à l'intérieur d'un actif ; celle-ci est la seule
+                  qui regarde d'un actif à l'autre.
+                </p>
+              </div>
+              <div>
+                <img src="../../img/edmp-duplicate-series.svg" alt="Deux groupes de quinze barres : à gauche toutes les barres sont identiques, à droite elles diffèrent toutes" style="width:100%;display:block;border-radius:10px;" />
+                <p class="muted" style="font-size:12.5px;margin-top:8px;">
+                  Volatilité par symbole, version corrompue contre version corrigée. Quinze valeurs
+                  identiques à côté de quinze valeurs différentes. Schéma, et non mesure : l'entrepôt
+                  corrompu n'existe plus.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-3" style="margin-top:16px;">
+            <div class="card">
+              <span class="bug-badge missed">Tests : non détecté</span>
+              <h3 style="margin:0 0 10px;">Une journée qui n'était pas terminée</h3>
+              <p class="muted">
+                Yahoo sert la séance en cours comme une barre ordinaire, avec une clôture et un volume
+                partiels. Deux reconstructions à une heure d'intervalle se contredisaient, et une étiquette
+                par actif était mesurée contre une clôture qui n'avait pas encore eu lieu.
+              </p>
+              <p class="guard">
+                <b>Garde-fou :</b> seules les séances terminées sont chargées. La règle se fonde sur la date
+                civile plutôt que sur le passage de 16 h, car une règle fondée sur l'heure ferait diverger
+                une exécution de 15 h et une de 17 h, soit exactement l'indéterminisme que l'on corrige.
+              </p>
+            </div>
+            <div class="card">
+              <span class="bug-badge missed">Tests : non détecté</span>
+              <h3 style="margin:0 0 10px;">Un titre disparu sans bruit</h3>
+              <p class="muted">
+                Chaque téléchargement est isolé pour qu'un symbole défaillant n'interrompe pas le lot, ce qui
+                rend un échec surmontable et donc silencieux. L'actif arrive quand même, sans aucune ligne de
+                prix, et zéro ligne satisfait toutes les vérifications par ligne de façon vide. Quinze
+                instruments pouvaient devenir quatorze sans qu'aucune métrique ne bronche.
+              </p>
+              <p class="guard">
+                <b>Garde-fou :</b> tout symbole déclaré dans <code>config/assets.csv</code> doit posséder au
+                moins une ligne de prix.
+              </p>
+            </div>
+            <div class="card">
+              <span class="bug-badge found">Trouvé en écrivant des tests</span>
+              <h3 style="margin:0 0 10px;">Un repli calculé trop tard</h3>
+              <p class="muted">
+                Le repli maximal compare l'équité au sommet atteint jusque-là. Ce sommet partait de la
+                clôture du premier jour plutôt que du capital de départ : la perte du premier jour n'était
+                donc jamais comptée. Partir de 100, perdre 10 %, reprendre 2 % : le sommet devient 90 et le
+                repli annoncé est de 0 % au lieu de 10 %.
+              </p>
+              <p class="muted">
+                Chacun des cinq plis de validation glissante est backtesté séparément, et chacun avait donc
+                son propre premier jour. L'erreur ne jouait que dans un sens, en faisant paraître les
+                stratégies plus sûres qu'elles ne l'étaient.
+              </p>
+              <p class="guard">
+                <b>Garde-fou :</b> le sommet courant ne peut pas descendre sous le capital de départ, ce que fixe un cas de
+                <code>tests/test_backtest.py</code> dont la réponse est calculée à la main.
+              </p>
+            </div>
+          </div>
+
+          <p style="margin-top:16px;">
+            <a href="https://github.com/will13cb/edmp_engine#readme" target="_blank" rel="noopener noreferrer">Le compte rendu complet dans le README →</a>
+          </p>
+        </div>
+      </section>
+
       <section>
         <div class="container">
           <h2>Architecture</h2>

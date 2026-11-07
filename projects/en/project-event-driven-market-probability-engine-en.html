@@ -136,6 +136,111 @@
         </div>
       </section>
 
+
+      <section id="bugs">
+        <div class="container">
+          <span class="eyebrow">Errors, and what caught them</span>
+          <h2 style="margin-top:12px;">Bugs that passed every test</h2>
+          <p class="muted" style="max-width:760px;">
+            Three of these four went straight through the test suite. In a data pipeline a wrong number
+            looks exactly like a right one, so each failure below is paired with the guard that now fails
+            the build if it comes back.
+          </p>
+
+          <div class="card" style="margin-top:16px;">
+            <div class="bug-hero">
+              <div>
+                <span class="bug-badge missed">Tests: missed</span>
+                <h3 style="margin:0 0 10px;">One ticker's prices, fifteen times</h3>
+                <p class="muted">
+                  <code>yf.download()</code> stages results in module-level state and resets it on entry, so
+                  concurrent calls overwrite each other's accumulator and every task can receive the same
+                  wrong frame. The warehouse ended up holding one ticker's prices under all fifteen symbols.
+                </p>
+                <p class="muted">
+                  Nothing failed. A duplicated series is internally consistent, so every per-asset assertion
+                  held, row counts were right and no nulls appeared. The only symptom was the model getting
+                  <em>better</em>, which is the most dangerous symptom there is.
+                </p>
+                <p class="muted">
+                  It was caught by noticing that SHY, a one to three year Treasury fund, reported the same
+                  volatility as XLE, an energy fund, to five decimal places.
+                </p>
+                <div class="stats">
+                  <div class="stat"><b>0.67</b><span>large-move AUC, corrupted</span></div>
+                  <div class="stat ok"><b>0.59</b><span>recorded baseline</span></div>
+                  <div class="stat ok"><b>0</b><span>tests failed</span></div>
+                </div>
+                <p class="guard">
+                  <b>Guard:</b> a cross-asset fingerprint in <code>sql/10_validations.sql</code> hashes each
+                  symbol's whole series and rejects any two that match. Every other check in the project
+                  validates within one asset; this is the only one that looks across them.
+                </p>
+              </div>
+              <div>
+                <img src="../../img/edmp-duplicate-series.svg" alt="Two groups of fifteen bars: on the left every bar is identical, on the right every bar differs" style="width:100%;display:block;border-radius:10px;" />
+                <p class="muted" style="font-size:12.5px;margin-top:8px;">
+                  Per-symbol volatility, corrupted against fixed. Fifteen identical values beside fifteen
+                  different ones. Schematic, not measured: the corrupted warehouse no longer exists.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-3" style="margin-top:16px;">
+            <div class="card">
+              <span class="bug-badge missed">Tests: missed</span>
+              <h3 style="margin:0 0 10px;">A day that hadn't ended yet</h3>
+              <p class="muted">
+                Yahoo serves the session in progress as an ordinary bar, with a partial close and partial
+                volume. Two rebuilds an hour apart disagreed, and one label per asset was measured against a
+                close that had not happened.
+              </p>
+              <p class="guard">
+                <b>Guard:</b> only settled sessions are ingested. The rule keys on the calendar date rather
+                than on whether 16:00 has passed, because a time-of-day rule would make a 15:00 run and a
+                17:00 run disagree, which is the non-determinism being fixed.
+              </p>
+            </div>
+            <div class="card">
+              <span class="bug-badge missed">Tests: missed</span>
+              <h3 style="margin:0 0 10px;">A ticker that quietly disappeared</h3>
+              <p class="muted">
+                Each fetch is wrapped so one bad symbol cannot abort the batch, which makes a failed download
+                survivable and therefore silent. The asset still arrives with zero price rows, and zero rows
+                satisfy every row-level check vacuously. Fifteen instruments could become fourteen with every
+                metric still reporting cleanly.
+              </p>
+              <p class="guard">
+                <b>Guard:</b> every symbol declared in <code>config/assets.csv</code> must have at least one
+                price row.
+              </p>
+            </div>
+            <div class="card">
+              <span class="bug-badge found">Found writing tests</span>
+              <h3 style="margin:0 0 10px;">Drawdown that started too late</h3>
+              <p class="muted">
+                Drawdown compares equity to the highest equity so far. The running peak started at day one's
+                close instead of the starting capital, so day one's own loss was never counted. Start at 100,
+                fall 10%, recover 2%: the peak becomes 90 and the reported drawdown is 0% rather than 10%.
+              </p>
+              <p class="muted">
+                Each of the five walk-forward folds is backtested separately, so each had its own day one.
+                The error only ever ran one way, making strategies look safer than they were.
+              </p>
+              <p class="guard">
+                <b>Guard:</b> the running peak is floored at the starting capital, pinned by a case in
+                <code>tests/test_backtest.py</code> with a hand-computed answer.
+              </p>
+            </div>
+          </div>
+
+          <p style="margin-top:16px;">
+            <a href="https://github.com/will13cb/edmp_engine#readme" target="_blank" rel="noopener noreferrer">Full write-up in the README →</a>
+          </p>
+        </div>
+      </section>
+
       <section>
         <div class="container">
           <h2>Architecture</h2>
